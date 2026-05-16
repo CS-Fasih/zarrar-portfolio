@@ -226,6 +226,130 @@
     });
   }
 
+  function setupEvidenceGallery() {
+    const gallery = document.getElementById("evidence");
+    const lightbox = document.getElementById("proof-lightbox");
+    if (!gallery || !lightbox) {
+      return;
+    }
+
+    const filters = Array.from(gallery.querySelectorAll(".evidence-filter"));
+    const cards = Array.from(gallery.querySelectorAll(".evidence-card"));
+    const image = document.getElementById("proof-lightbox-image");
+    const title = document.getElementById("proof-lightbox-title");
+    const module = document.getElementById("proof-lightbox-module");
+    const count = document.getElementById("proof-lightbox-count");
+    const closeButtons = lightbox.querySelectorAll("[data-lightbox-close]");
+    const previousButton = lightbox.querySelector("[data-lightbox-prev]");
+    const nextButton = lightbox.querySelector("[data-lightbox-next]");
+    let visibleCards = cards.slice();
+    let currentIndex = 0;
+    let lastFocused = null;
+
+    function syncVisibleCards() {
+      visibleCards = cards.filter((card) => !card.classList.contains("is-hidden"));
+    }
+
+    function cardData(card) {
+      const cardImage = card.querySelector("img");
+      const moduleName = card.dataset.moduleLabel || "FYP Evidence";
+      const meta = card.querySelector(".evidence-meta p");
+      return {
+        src: cardImage ? cardImage.currentSrc || cardImage.src : "",
+        alt: cardImage ? cardImage.alt : moduleName,
+        moduleName,
+        moduleCode: (card.dataset.module || "").toUpperCase(),
+        metaText: meta ? meta.textContent : "FYP screenshot"
+      };
+    }
+
+    function showLightbox(index) {
+      if (!visibleCards.length) {
+        return;
+      }
+      currentIndex = (index + visibleCards.length) % visibleCards.length;
+      const data = cardData(visibleCards[currentIndex]);
+      image.src = data.src;
+      image.alt = data.alt;
+      module.textContent = data.moduleCode ? `${data.moduleCode} · ${data.moduleName}` : data.moduleName;
+      title.textContent = data.moduleName;
+      count.textContent = `${data.metaText} · ${currentIndex + 1} of ${visibleCards.length} shown`;
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      const closeButton = lightbox.querySelector(".proof-close");
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      image.removeAttribute("src");
+      if (lastFocused) {
+        lastFocused.focus();
+      }
+    }
+
+    function moveLightbox(delta) {
+      showLightbox(currentIndex + delta);
+    }
+
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        const selected = filter.dataset.filter || "all";
+        filters.forEach((button) => {
+          const active = button === filter;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        cards.forEach((card) => {
+          const hidden = selected !== "all" && card.dataset.module !== selected;
+          const trigger = card.querySelector(".evidence-thumb");
+          card.classList.toggle("is-hidden", hidden);
+          card.setAttribute("aria-hidden", String(hidden));
+          if (trigger) {
+            trigger.tabIndex = hidden ? -1 : 0;
+          }
+        });
+        syncVisibleCards();
+      });
+    });
+
+    cards.forEach((card) => {
+      const trigger = card.querySelector(".evidence-thumb");
+      if (!trigger) {
+        return;
+      }
+      trigger.addEventListener("click", () => {
+        lastFocused = trigger;
+        syncVisibleCards();
+        showLightbox(visibleCards.indexOf(card));
+      });
+    });
+
+    closeButtons.forEach((button) => button.addEventListener("click", closeLightbox));
+    previousButton && previousButton.addEventListener("click", () => moveLightbox(-1));
+    nextButton && nextButton.addEventListener("click", () => moveLightbox(1));
+
+    document.addEventListener("keydown", (event) => {
+      if (lightbox.hidden) {
+        return;
+      }
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+      if (event.key === "ArrowLeft") {
+        moveLightbox(-1);
+      }
+      if (event.key === "ArrowRight") {
+        moveLightbox(1);
+      }
+    });
+  }
+
   function setupHolographicDepth() {
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -237,6 +361,7 @@
       ".stat-card",
       ".skill-category",
       ".project-card",
+      ".evidence-card",
       ".video-card",
       ".achievement-card"
     ].join(", "));
@@ -268,6 +393,7 @@
   setupCounters();
   setupMenu();
   setupContactForm();
+  setupEvidenceGallery();
   setupHolographicDepth();
   updateScrollState();
   window.addEventListener("scroll", updateScrollState, { passive: true });
