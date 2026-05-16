@@ -8,6 +8,7 @@
   --border: rgba(119,0,204,0.15);
   --radius: 12px;
   --shadow: 0 4px 24px rgba(119,0,204,0.10);
+  --depth-shadow: 0 24px 70px rgba(85,0,122,0.18);
   --cyan-soft: rgba(0,153,204,0.12);
   --purple-soft: rgba(119,0,204,0.08);
   --max-width: 1160px;
@@ -29,6 +30,27 @@ body {
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(119,0,204,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,153,204,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  opacity: 0.45;
+}
+
+main,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 body.menu-open {
@@ -385,11 +407,13 @@ select {
 .section {
   padding: 104px 20px;
   position: relative;
+  perspective: 1400px;
 }
 
 .section-inner {
   width: min(var(--max-width), 100%);
   margin: 0 auto;
+  transform-style: preserve-3d;
 }
 
 .section-heading {
@@ -641,6 +665,7 @@ select {
   flex-direction: column;
   justify-content: space-between;
   padding: 16px;
+  border-radius: 10px 10px 0 0;
   background:
     linear-gradient(135deg, rgba(26,0,51,0.9), rgba(85,0,122,0.86)),
     linear-gradient(135deg, var(--primary), var(--secondary));
@@ -896,6 +921,166 @@ select {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.stat-card,
+.reveal.visible.skill-category,
+.reveal.visible.project-card,
+.reveal.visible.video-card,
+.reveal.visible.achievement-card,
+.reveal.visible.contact-form {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  --lift-y: 0px;
+  --lift-z: 0px;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  transform-style: preserve-3d;
+  transform: perspective(950px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0, var(--lift-y), var(--lift-z));
+  box-shadow:
+    0 14px 34px rgba(119,0,204,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  will-change: transform;
+}
+
+.stat-card::before,
+.reveal.visible.skill-category::before,
+.reveal.visible.project-card::before,
+.reveal.visible.video-card::before,
+.reveal.visible.achievement-card::before,
+.reveal.visible.contact-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--mx) var(--my), rgba(0,153,204,0.2), transparent 30%),
+    linear-gradient(135deg, rgba(119,0,204,0.1), transparent 36%, rgba(0,153,204,0.08));
+  opacity: 0.22;
+  transform: translateZ(36px);
+  transition: opacity 0.22s ease;
+}
+
+.stat-card::after,
+.reveal.visible.skill-category::after,
+.reveal.visible.project-card::after,
+.reveal.visible.video-card::after,
+.reveal.visible.achievement-card::after,
+.reveal.visible.contact-form::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -18px;
+  height: 32px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(119,0,204,0.2), rgba(0,153,204,0.22));
+  filter: blur(18px);
+  opacity: 0.34;
+  transform: translateZ(-34px) rotateX(72deg);
+  transition: opacity 0.22s ease;
+}
+
+.stat-card > *,
+.reveal.visible.skill-category > *,
+.reveal.visible.project-card > *,
+.reveal.visible.video-card > *,
+.reveal.visible.achievement-card > *,
+.reveal.visible.contact-form > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card:hover,
+.reveal.visible.skill-category:hover,
+.reveal.visible.project-card:hover,
+.reveal.visible.video-card:hover,
+.reveal.visible.achievement-card:hover,
+.reveal.visible.contact-form:hover {
+  --lift-y: -8px;
+  --lift-z: 18px;
+  border-color: rgba(0,153,204,0.36);
+  box-shadow: var(--depth-shadow);
+}
+
+.stat-card:hover::before,
+.stat-card:hover::after,
+.reveal.visible.skill-category:hover::before,
+.reveal.visible.skill-category:hover::after,
+.reveal.visible.project-card:hover::before,
+.reveal.visible.project-card:hover::after,
+.reveal.visible.video-card:hover::before,
+.reveal.visible.video-card:hover::after,
+.reveal.visible.achievement-card:hover::before,
+.reveal.visible.achievement-card:hover::after,
+.reveal.visible.contact-form:hover::before,
+.reveal.visible.contact-form:hover::after {
+  opacity: 1;
+}
+
+.reveal.visible.project-card:hover {
+  border-left-color: var(--primary);
+}
+
+.reveal.visible.skill-category h3,
+.reveal.visible.project-card h3,
+.reveal.visible.achievement-card h3,
+.reveal.visible.video-frame strong,
+.stat-card strong {
+  transform: translateZ(34px);
+}
+
+.reveal.visible .tags span,
+.reveal.visible.project-card .badge,
+.reveal.visible.project-card .project-year,
+.reveal.visible.contact-form .btn {
+  transform: translateZ(42px);
+}
+
+.reveal.visible.video-card .video-frame {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(18px);
+}
+
+.video-frame::before {
+  content: "";
+  position: absolute;
+  inset: -24%;
+  background:
+    linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.24;
+  transform: rotateX(58deg) rotateZ(-18deg) translateY(18px);
+}
+
+.timeline {
+  perspective: 1200px;
+}
+
+.reveal.visible.timeline-item {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(-1.2deg) translateZ(0);
+  box-shadow: 0 14px 38px rgba(119,0,204,0.08);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.reveal.visible.timeline-item:hover {
+  transform: perspective(1000px) rotateY(-3.6deg) translate3d(10px, -4px, 18px);
+  border-color: rgba(0,153,204,0.34);
+  box-shadow: 0 24px 58px rgba(85,0,122,0.14);
+}
+
+.section-heading.reveal.visible {
+  transform: perspective(900px) translateZ(18px);
 }
 
 .reveal {

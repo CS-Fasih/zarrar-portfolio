@@ -226,11 +226,50 @@
     });
   }
 
+  function setupHolographicDepth() {
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!canHover || reducedMotion) {
+      return;
+    }
+
+    const cards = document.querySelectorAll([
+      ".stat-card",
+      ".skill-category",
+      ".project-card",
+      ".video-card",
+      ".achievement-card",
+      ".contact-form"
+    ].join(", "));
+
+    cards.forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 12;
+        const rotateX = (0.5 - y) * 10;
+        card.style.setProperty("--ry", `${rotateY.toFixed(2)}deg`);
+        card.style.setProperty("--rx", `${rotateX.toFixed(2)}deg`);
+        card.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
+        card.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.setProperty("--ry", "0deg");
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--mx", "50%");
+        card.style.setProperty("--my", "50%");
+      });
+    });
+  }
+
   startTypewriter();
   setupReveal();
   setupCounters();
   setupMenu();
   setupContactForm();
+  setupHolographicDepth();
   updateScrollState();
   window.addEventListener("scroll", updateScrollState, { passive: true });
 })();
