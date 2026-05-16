@@ -61,6 +61,24 @@ body.lightbox-open {
   overflow: hidden;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  height: 3px;
+  background: rgba(119,0,204,0.08);
+}
+
+.scroll-progress span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 18px rgba(0,153,204,0.42);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -147,12 +165,14 @@ select {
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.nav-links a.active {
   color: var(--primary);
 }
 
 .nav-links a:hover::after,
-.nav-links a:focus-visible::after {
+.nav-links a:focus-visible::after,
+.nav-links a.active::after {
   transform: scaleX(1);
 }
 
@@ -472,6 +492,7 @@ select {
 }
 
 .stat-card,
+.focus-card,
 .skill-category,
 .project-card,
 .achievement-card,
@@ -506,6 +527,71 @@ select {
 
 .stat-card span:last-child {
   font-weight: 700;
+  color: rgba(26,0,51,0.72);
+}
+
+.focus-section {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.28), rgba(119,0,204,0.06)),
+    radial-gradient(circle at 86% 18%, rgba(0,153,204,0.11), transparent 32%);
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.focus-card {
+  position: relative;
+  min-height: 280px;
+  padding: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0,153,204,0.12), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.95), rgba(250,247,255,0.9));
+}
+
+.focus-card::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(119,0,204,0.12);
+  border-radius: 10px;
+  transform: rotateX(62deg) rotateZ(-18deg) translateY(46px);
+  transform-origin: center bottom;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.focus-mark {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border: 1px solid rgba(0,153,204,0.26);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(119,0,204,0.12), rgba(0,153,204,0.16)),
+    rgba(255,255,255,0.72);
+  color: var(--primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 16px 34px rgba(119,0,204,0.12);
+}
+
+.focus-card h3 {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 21px;
+  line-height: 1.22;
+}
+
+.focus-card p {
+  margin: 0;
   color: rgba(26,0,51,0.72);
 }
 
@@ -641,6 +727,36 @@ select {
   min-height: 32px;
   padding: 6px 10px;
   font-size: 13px;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.inline-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 7px 13px;
+  border: 1px solid rgba(0,153,204,0.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.76);
+  color: var(--secondary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 12px 26px rgba(0,153,204,0.08);
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(119,0,204,0.28);
+  color: var(--primary);
 }
 
 .video-section {
@@ -1079,9 +1195,19 @@ select {
 }
 
 .achievement-card > span {
-  display: block;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
   margin-bottom: 18px;
-  font-size: 32px;
+  border: 1px solid rgba(0,153,204,0.24);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(119,0,204,0.12), rgba(0,153,204,0.14));
+  color: var(--primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 15px 34px rgba(119,0,204,0.1);
 }
 
 .contact-section {
@@ -1109,7 +1235,29 @@ select {
   margin-bottom: 24px;
 }
 
-.social-row a {
+.availability-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 24px;
+}
+
+.availability-panel span {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  border: 1px solid rgba(0,153,204,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.76);
+  color: rgba(26,0,51,0.72);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.social-row a,
+.copy-email {
   display: inline-flex;
   align-items: center;
   min-height: 40px;
@@ -1118,6 +1266,24 @@ select {
   border-radius: 999px;
   background: #fff;
   color: var(--accent);
+  font-weight: 700;
+}
+
+.copy-email {
+  cursor: pointer;
+}
+
+.copy-email:hover,
+.copy-email:focus-visible {
+  color: var(--primary);
+}
+
+.copy-status {
+  min-height: 24px;
+  margin: -12px 0 18px;
+  color: var(--secondary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -1231,6 +1397,7 @@ select {
 }
 
 .stat-card,
+.reveal.visible.focus-card,
 .reveal.visible.skill-category,
 .reveal.visible.project-card,
 .reveal.visible.evidence-card,
@@ -1255,6 +1422,7 @@ select {
 }
 
 .stat-card::before,
+.reveal.visible.focus-card::before,
 .reveal.visible.skill-category::before,
 .reveal.visible.project-card::before,
 .reveal.visible.evidence-card::before,
@@ -1275,6 +1443,7 @@ select {
 }
 
 .stat-card::after,
+.reveal.visible.focus-card::after,
 .reveal.visible.skill-category::after,
 .reveal.visible.project-card::after,
 .reveal.visible.evidence-card::after,
@@ -1296,6 +1465,7 @@ select {
 }
 
 .stat-card > *,
+.reveal.visible.focus-card > *,
 .reveal.visible.skill-category > *,
 .reveal.visible.project-card > *,
 .reveal.visible.evidence-card > *,
@@ -1306,6 +1476,7 @@ select {
 }
 
 .stat-card:hover,
+.reveal.visible.focus-card:hover,
 .reveal.visible.skill-category:hover,
 .reveal.visible.project-card:hover,
 .reveal.visible.evidence-card:hover,
@@ -1319,6 +1490,8 @@ select {
 
 .stat-card:hover::before,
 .stat-card:hover::after,
+.reveal.visible.focus-card:hover::before,
+.reveal.visible.focus-card:hover::after,
 .reveal.visible.skill-category:hover::before,
 .reveal.visible.skill-category:hover::after,
 .reveal.visible.project-card:hover::before,
@@ -1337,6 +1510,7 @@ select {
 }
 
 .reveal.visible.skill-category h3,
+.reveal.visible.focus-card h3,
 .reveal.visible.project-card h3,
 .reveal.visible.evidence-card h3,
 .reveal.visible.achievement-card h3,
@@ -1346,6 +1520,7 @@ select {
 }
 
 .reveal.visible .tags span,
+.reveal.visible.focus-card .focus-mark,
 .reveal.visible.project-card .badge,
 .reveal.visible.project-card .project-year,
 .reveal.visible.evidence-card .evidence-code,
@@ -1582,6 +1757,10 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .project-card.featured {
     grid-row: auto;
   }
@@ -1664,6 +1843,7 @@ select {
   }
 
   .skills-grid,
+  .focus-grid,
   .stats-grid,
   .video-grid,
   .evidence-grid,

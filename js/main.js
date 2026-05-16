@@ -11,6 +11,14 @@
   const navLinks = document.querySelector(".nav-links");
   const backToTop = document.querySelector(".back-to-top");
   const contactForm = document.getElementById("contact-form");
+  const progressBar = document.querySelector(".scroll-progress span");
+  const navItems = Array.from(document.querySelectorAll(".nav-links a[href^='#']:not(.nav-cta)"));
+  const trackedSections = navItems
+    .map((link) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      return target ? { link, target } : null;
+    })
+    .filter(Boolean);
   const LOCAL_CONTACT_API = "http://localhost:3001/api/contact";
   const PRODUCTION_CONTACT_API = "https://zarrar-portfolio-api.onrender.com/api/contact";
   const CONTACT_API = ["localhost", "127.0.0.1"].includes(window.location.hostname)
@@ -124,6 +132,39 @@
     const isScrolled = window.scrollY > 50;
     header && header.classList.toggle("scrolled", isScrolled);
     backToTop && backToTop.classList.toggle("visible", window.scrollY > 640);
+    updateScrollProgress();
+    updateActiveNav();
+  }
+
+  function updateScrollProgress() {
+    if (!progressBar) {
+      return;
+    }
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, progress)).toFixed(2)}%`;
+  }
+
+  function updateActiveNav() {
+    if (!trackedSections.length) {
+      return;
+    }
+    const position = window.scrollY + 180;
+    let activeItem = trackedSections[0];
+    trackedSections.forEach((item) => {
+      if (item.target.offsetTop <= position) {
+        activeItem = item;
+      }
+    });
+    trackedSections.forEach((item) => {
+      const active = item === activeItem;
+      item.link.classList.toggle("active", active);
+      if (active) {
+        item.link.setAttribute("aria-current", "page");
+      } else {
+        item.link.removeAttribute("aria-current");
+      }
+    });
   }
 
   function setupMenu() {
@@ -222,6 +263,46 @@
           submitButton.disabled = false;
           submitButton.textContent = "Send Message \u2192";
         }
+      }
+    });
+  }
+
+  function setupCopyEmail() {
+    const copyButton = document.querySelector("[data-copy-email]");
+    const status = document.querySelector(".copy-status");
+    if (!copyButton) {
+      return;
+    }
+
+    function setCopyStatus(message) {
+      if (status) {
+        status.textContent = message;
+      }
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    }
+
+    copyButton.addEventListener("click", async () => {
+      const email = copyButton.dataset.copyEmail || "";
+      try {
+        await copyText(email);
+        setCopyStatus("Email copied to clipboard.");
+      } catch (error) {
+        setCopyStatus("Email is zarrarabbas73@gmail.com.");
       }
     });
   }
@@ -362,6 +443,7 @@
 
     const cards = document.querySelectorAll([
       ".stat-card",
+      ".focus-card",
       ".skill-category",
       ".project-card",
       ".evidence-card",
@@ -396,8 +478,12 @@
   setupCounters();
   setupMenu();
   setupContactForm();
+  setupCopyEmail();
   setupEvidenceGallery();
   setupHolographicDepth();
   updateScrollState();
   window.addEventListener("scroll", updateScrollState, { passive: true });
+  window.addEventListener("resize", updateScrollState);
+  window.addEventListener("hashchange", () => window.setTimeout(updateScrollState, 180));
+  window.addEventListener("load", () => window.setTimeout(updateScrollState, 180));
 })();
