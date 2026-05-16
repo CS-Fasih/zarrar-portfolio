@@ -431,7 +431,6 @@ select {
 .section {
   padding: 104px 20px;
   position: relative;
-  perspective: 1400px;
   scroll-margin-top: 98px;
 }
 
@@ -558,7 +557,7 @@ select {
   inset: 16px;
   border: 1px solid rgba(119,0,204,0.12);
   border-radius: 10px;
-  transform: rotateX(62deg) rotateZ(-18deg) translateY(46px);
+  transform: translateY(46px);
   transform-origin: center bottom;
   opacity: 0.6;
   pointer-events: none;
@@ -1403,17 +1402,14 @@ select {
 .reveal.visible.evidence-card,
 .reveal.visible.video-card,
 .reveal.visible.achievement-card {
-  --rx: 0deg;
-  --ry: 0deg;
   --mx: 50%;
   --my: 50%;
   --lift-y: 0px;
-  --lift-z: 0px;
   position: relative;
   isolation: isolate;
   overflow: visible;
   transform-style: preserve-3d;
-  transform: perspective(950px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0, var(--lift-y), var(--lift-z));
+  transform: translate3d(0, var(--lift-y), 0);
   box-shadow:
     0 14px 34px rgba(119,0,204,0.1),
     inset 0 1px 0 rgba(255,255,255,0.9);
@@ -1460,7 +1456,7 @@ select {
   background: linear-gradient(90deg, rgba(119,0,204,0.2), rgba(0,153,204,0.22));
   filter: blur(18px);
   opacity: 0.34;
-  transform: translateZ(-34px) rotateX(72deg);
+  transform: translateY(10px);
   transition: opacity 0.22s ease;
 }
 
@@ -1483,7 +1479,6 @@ select {
 .reveal.visible.video-card:hover,
 .reveal.visible.achievement-card:hover {
   --lift-y: -8px;
-  --lift-z: 18px;
   border-color: rgba(0,153,204,0.36);
   box-shadow: var(--depth-shadow);
 }
@@ -1543,7 +1538,7 @@ select {
     linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
   background-size: 28px 28px;
   opacity: 0.24;
-  transform: rotateX(58deg) rotateZ(-18deg) translateY(18px);
+  transform: translateY(18px);
 }
 
 .proof-lightbox {
@@ -1660,25 +1655,21 @@ select {
   background: var(--accent);
 }
 
-.timeline {
-  perspective: 1200px;
-}
-
 .reveal.visible.timeline-item {
   transform-style: preserve-3d;
-  transform: perspective(1000px) rotateY(-1.2deg) translateZ(0);
+  transform: translate3d(0, 0, 0);
   box-shadow: 0 14px 38px rgba(119,0,204,0.08);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .reveal.visible.timeline-item:hover {
-  transform: perspective(1000px) rotateY(-3.6deg) translate3d(10px, -4px, 18px);
+  transform: translate3d(0, -4px, 0);
   border-color: rgba(0,153,204,0.34);
   box-shadow: 0 24px 58px rgba(85,0,122,0.14);
 }
 
 .section-heading.reveal.visible {
-  transform: perspective(900px) translateZ(18px);
+  transform: translateY(0);
 }
 
 .reveal {
