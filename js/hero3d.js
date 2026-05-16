@@ -33,15 +33,16 @@
   renderer.setClearColor(0xfaf7ff, 1);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
-  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
-  camera.position.set(0, 2.1, 8);
+  const camera = new THREE.PerspectiveCamera(47, 1, 0.1, 100);
+  camera.position.set(0, 1.55, 7.4);
 
   const root = new THREE.Group();
   scene.add(root);
 
   const cubeGroup = new THREE.Group();
-  const baseY = -1.05;
-  cubeGroup.position.y = baseY;
+  const desktopBaseY = 0.52;
+  let currentBaseY = desktopBaseY;
+  cubeGroup.position.y = currentBaseY;
   root.add(cubeGroup);
 
   const purple = new THREE.Color("#7700cc");
@@ -57,9 +58,9 @@
     return new THREE.LineSegments(edges, material);
   }
 
-  const outerCube = makeEdges(new THREE.BoxGeometry(2.55, 2.55, 2.55), purple, 0.9);
-  const innerCube = makeEdges(new THREE.BoxGeometry(1.18, 1.18, 1.18), cyan, 0.95);
-  const octahedron = makeEdges(new THREE.OctahedronGeometry(1.72), purple, 0.52);
+  const outerCube = makeEdges(new THREE.BoxGeometry(2.3, 2.3, 2.3), purple, 0.96);
+  const innerCube = makeEdges(new THREE.BoxGeometry(1.05, 1.05, 1.05), cyan, 0.92);
+  const octahedron = makeEdges(new THREE.OctahedronGeometry(1.56), purple, 0.58);
   cubeGroup.add(outerCube, innerCube, octahedron);
 
   const ringMaterialA = new THREE.MeshBasicMaterial({
@@ -74,8 +75,8 @@
     transparent: true,
     opacity: 0.5
   });
-  const ringA = new THREE.Mesh(new THREE.TorusGeometry(2.35, 0.025, 8, 92), ringMaterialA);
-  const ringB = new THREE.Mesh(new THREE.TorusGeometry(2.9, 0.022, 8, 92), ringMaterialB);
+  const ringA = new THREE.Mesh(new THREE.TorusGeometry(2.08, 0.024, 8, 92), ringMaterialA);
+  const ringB = new THREE.Mesh(new THREE.TorusGeometry(2.52, 0.021, 8, 92), ringMaterialB);
   ringA.rotation.x = Math.PI / 2.6;
   ringA.rotation.y = Math.PI / 5;
   ringB.rotation.x = -Math.PI / 3;
@@ -83,9 +84,9 @@
   cubeGroup.add(ringA, ringB);
 
   const grid = new THREE.GridHelper(18, 32, 0x7700cc, 0x0099cc);
-  grid.position.y = -2.7;
+  grid.position.y = -2.35;
   grid.material.transparent = true;
-  grid.material.opacity = 0.13;
+  grid.material.opacity = 0.16;
   scene.add(grid);
 
   function createParticleSet(count, color, size, radius, rising) {
@@ -94,7 +95,7 @@
     for (let i = 0; i < count; i += 1) {
       const ix = i * 3;
       positions[ix] = (Math.random() - 0.5) * radius;
-      positions[ix + 1] = (Math.random() - 0.5) * 7.8;
+      positions[ix + 1] = (Math.random() - 0.5) * 8.2;
       positions[ix + 2] = (Math.random() - 0.5) * radius;
       speeds[i] = rising ? 0.009 + Math.random() * 0.018 : 0.003 + Math.random() * 0.008;
     }
@@ -105,7 +106,7 @@
       color,
       size,
       transparent: true,
-      opacity: rising ? 0.66 : 0.45,
+      opacity: rising ? 0.76 : 0.55,
       depthWrite: false
     });
     const points = new THREE.Points(geometry, material);
@@ -115,8 +116,8 @@
     return points;
   }
 
-  const cyanParticles = createParticleSet(180, cyan, 0.035, 11, true);
-  const purpleParticles = createParticleSet(120, purple, 0.03, 12, false);
+  const cyanParticles = createParticleSet(220, cyan, 0.04, 11, true);
+  const purpleParticles = createParticleSet(150, purple, 0.034, 12, false);
 
   const purpleLight = new THREE.PointLight(0x7700cc, 1.6, 14);
   purpleLight.position.set(-3.5, 3, 4);
@@ -126,7 +127,7 @@
   scene.add(purpleLight, cyanLight, ambient);
 
   const mouse = new THREE.Vector2(0, 0);
-  const target = new THREE.Vector3(0, baseY, 0);
+  const target = new THREE.Vector3(0, currentBaseY, 0);
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function resize() {
@@ -135,12 +136,16 @@
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
+    const compact = width < 720;
+    currentBaseY = compact ? 0.12 : desktopBaseY;
+    cubeGroup.scale.setScalar(compact ? 0.72 : 1);
+    target.y = currentBaseY;
   }
 
   function onMouseMove(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    target.set(mouse.x * 0.85, baseY + mouse.y * 0.35, 0);
+    target.set(mouse.x * 0.72, currentBaseY + mouse.y * 0.28, 0);
   }
 
   function animateParticles(points, delta) {

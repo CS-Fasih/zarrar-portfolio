@@ -56,18 +56,18 @@ select {
 }
 
 .navbar {
-  width: min(var(--max-width), calc(100% - 36px));
-  margin: 16px auto 0;
-  min-height: 68px;
+  width: min(1044px, calc(100% - 96px));
+  margin: 18px auto 0;
+  min-height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 0 18px 0 22px;
-  background: rgba(250,247,255,0.75);
+  gap: 22px;
+  padding: 0 18px 0 20px;
+  background: rgba(250,247,255,0.82);
   border: 1px solid var(--border);
   border-bottom-color: rgba(119,0,204,0.18);
-  border-radius: 999px;
+  border-radius: 10px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
@@ -83,7 +83,7 @@ select {
 
 .logo {
   font-family: Georgia, "Cormorant Garamond", serif;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 700;
   color: var(--primary);
   white-space: nowrap;
@@ -96,8 +96,8 @@ select {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
-  font-size: 14px;
+  gap: 20px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -131,7 +131,7 @@ select {
 }
 
 .nav-cta {
-  padding: 11px 18px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: var(--primary);
   color: #fff !important;
@@ -182,7 +182,7 @@ select {
   display: grid;
   place-items: center;
   overflow: hidden;
-  padding: 140px 20px 116px;
+  padding: 112px 20px 96px;
 }
 
 #hero-canvas {
@@ -199,8 +199,8 @@ select {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(250,247,255,0.52) 0%, rgba(250,247,255,0.24) 48%, rgba(250,247,255,0.86) 100%),
-    radial-gradient(circle at 50% 45%, rgba(0,153,204,0.12), transparent 38%);
+    linear-gradient(180deg, rgba(250,247,255,0.42) 0%, rgba(250,247,255,0.12) 45%, rgba(250,247,255,0.78) 100%),
+    radial-gradient(circle at 50% 42%, rgba(0,153,204,0.11), transparent 34%);
   pointer-events: none;
 }
 
@@ -209,40 +209,46 @@ select {
   z-index: 2;
   width: min(900px, 100%);
   text-align: center;
+  margin-top: 12px;
 }
 
 .eyebrow,
 .section-kicker {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--secondary);
   font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.eyebrow {
+  letter-spacing: 4px;
 }
 
 .hero h1 {
   margin: 0;
   font-family: Georgia, "Cormorant Garamond", serif;
   color: var(--text);
-  font-size: 64px;
-  line-height: 0.92;
+  font-size: 70px;
+  line-height: 0.88;
   font-weight: 700;
+  text-shadow: 0 8px 26px rgba(250,247,255,0.88);
 }
 
 .typewriter-line {
-  min-height: 44px;
-  margin: 26px 0 14px;
+  min-height: 32px;
+  margin: 22px 0 14px;
   color: var(--primary);
   font-family: "JetBrains Mono", monospace;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .cursor {
   display: inline-block;
-  width: 12px;
-  height: 24px;
+  width: 10px;
+  height: 22px;
   margin-left: 8px;
   transform: translateY(4px);
   background: var(--secondary);
@@ -251,9 +257,9 @@ select {
 
 .hero-bio {
   width: min(620px, 100%);
-  margin: 0 auto 30px;
+  margin: 0 auto 22px;
   color: rgba(26,0,51,0.78);
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .hero-actions {
@@ -268,8 +274,8 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 22px;
+  min-height: 42px;
+  padding: 0 21px;
   border: 1px solid transparent;
   border-radius: 999px;
   font-weight: 700;
@@ -309,30 +315,31 @@ select {
 .hero-bottom {
   position: absolute;
   left: 50%;
-  bottom: 24px;
+  bottom: 22px;
   z-index: 3;
-  width: min(var(--max-width), calc(100% - 36px));
+  width: min(1044px, calc(100% - 96px));
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 14px 18px;
-  background: rgba(255,255,255,0.68);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: var(--shadow);
+  gap: 28px;
+  padding: 0 26px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
 }
 
 .scroll-hint {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   color: var(--secondary);
   font-family: "JetBrains Mono", monospace;
-  font-size: 12px;
+  font-size: 10px;
+  letter-spacing: 4px;
 }
 
 .scroll-hint span {
@@ -346,16 +353,33 @@ select {
 
 .hero-stats {
   display: flex;
-  gap: 18px;
+  gap: 36px;
   flex-wrap: wrap;
   justify-content: flex-end;
-  color: rgba(26,0,51,0.76);
+  color: var(--primary);
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
 }
 
 .hero-stats span {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
   white-space: nowrap;
+}
+
+.hero-stats strong {
+  color: var(--primary);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.hero-stats em {
+  color: rgba(26,0,51,0.66);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .section {
@@ -913,7 +937,7 @@ select {
 
   .nav-links {
     position: fixed;
-    top: 88px;
+    top: 82px;
     left: 18px;
     right: 18px;
     display: grid;
@@ -970,6 +994,7 @@ select {
     min-height: 62px;
     margin-top: 10px;
     padding-left: 16px;
+    border-radius: 999px;
   }
 
   .logo {
@@ -978,11 +1003,11 @@ select {
 
   .hero {
     min-height: 100vh;
-    padding: 116px 16px 150px;
+    padding: 106px 16px 142px;
   }
 
   .hero h1 {
-    font-size: 48px;
+    font-size: 52px;
   }
 
   .typewriter-line {
@@ -1005,11 +1030,14 @@ select {
     width: calc(100% - 24px);
     display: grid;
     gap: 12px;
+    padding: 0 18px;
   }
 
   .hero-stats {
     justify-content: flex-start;
-    gap: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
   }
 
   .section {
