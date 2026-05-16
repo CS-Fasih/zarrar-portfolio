@@ -238,8 +238,7 @@
       ".skill-category",
       ".project-card",
       ".video-card",
-      ".achievement-card",
-      ".contact-form"
+      ".achievement-card"
     ].join(", "));
 
     cards.forEach((card) => {
