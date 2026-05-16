@@ -3,7 +3,7 @@
     "AR/VR Developer",
     "Python Developer",
     "AI/ML Enthusiast",
-    "Immersive XR Builder"
+    "Immersive VR Builder"
   ];
   const typewriter = document.getElementById("typewriter");
   const header = document.querySelector(".site-header");
