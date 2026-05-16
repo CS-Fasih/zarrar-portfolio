@@ -243,6 +243,8 @@
     const previousButton = lightbox.querySelector("[data-lightbox-prev]");
     const nextButton = lightbox.querySelector("[data-lightbox-next]");
     let visibleCards = cards.slice();
+    let currentCard = null;
+    let currentGallery = [];
     let currentIndex = 0;
     let lastFocused = null;
 
@@ -250,30 +252,30 @@
       visibleCards = cards.filter((card) => !card.classList.contains("is-hidden"));
     }
 
-    function cardData(card) {
-      const cardImage = card.querySelector("img");
+    function cardImages(card) {
       const moduleName = card.dataset.moduleLabel || "FYP Evidence";
-      const meta = card.querySelector(".evidence-meta p");
-      return {
-        src: cardImage ? cardImage.currentSrc || cardImage.src : "",
-        alt: cardImage ? cardImage.alt : moduleName,
+      const moduleCode = (card.dataset.module || "").toUpperCase();
+      return Array.from(card.querySelectorAll("[data-proof-image]")).map((cardImage, index) => ({
+        src: cardImage.currentSrc || cardImage.src,
+        alt: cardImage.alt || `${moduleName} screenshot ${index + 1}`,
         moduleName,
-        moduleCode: (card.dataset.module || "").toUpperCase(),
-        metaText: meta ? meta.textContent : "FYP screenshot"
-      };
+        moduleCode
+      }));
     }
 
-    function showLightbox(index) {
-      if (!visibleCards.length) {
+    function showLightbox(card, index) {
+      currentCard = card;
+      currentGallery = cardImages(card);
+      if (!currentGallery.length) {
         return;
       }
-      currentIndex = (index + visibleCards.length) % visibleCards.length;
-      const data = cardData(visibleCards[currentIndex]);
+      currentIndex = (index + currentGallery.length) % currentGallery.length;
+      const data = currentGallery[currentIndex];
       image.src = data.src;
       image.alt = data.alt;
       module.textContent = data.moduleCode ? `${data.moduleCode} · ${data.moduleName}` : data.moduleName;
       title.textContent = data.moduleName;
-      count.textContent = `${data.metaText} · ${currentIndex + 1} of ${visibleCards.length} shown`;
+      count.textContent = `Screenshot ${currentIndex + 1} of ${currentGallery.length} · ${visibleCards.length} module${visibleCards.length === 1 ? "" : "s"} shown`;
       lightbox.hidden = false;
       lightbox.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
@@ -294,7 +296,9 @@
     }
 
     function moveLightbox(delta) {
-      showLightbox(currentIndex + delta);
+      if (currentCard) {
+        showLightbox(currentCard, currentIndex + delta);
+      }
     }
 
     filters.forEach((filter) => {
@@ -307,26 +311,25 @@
         });
         cards.forEach((card) => {
           const hidden = selected !== "all" && card.dataset.module !== selected;
-          const trigger = card.querySelector(".evidence-thumb");
+          const triggers = card.querySelectorAll(".evidence-thumb, .evidence-mini");
           card.classList.toggle("is-hidden", hidden);
           card.setAttribute("aria-hidden", String(hidden));
-          if (trigger) {
+          triggers.forEach((trigger) => {
             trigger.tabIndex = hidden ? -1 : 0;
-          }
+          });
         });
         syncVisibleCards();
       });
     });
 
     cards.forEach((card) => {
-      const trigger = card.querySelector(".evidence-thumb");
-      if (!trigger) {
-        return;
-      }
-      trigger.addEventListener("click", () => {
-        lastFocused = trigger;
-        syncVisibleCards();
-        showLightbox(visibleCards.indexOf(card));
+      const triggers = card.querySelectorAll(".evidence-thumb, .evidence-mini");
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          lastFocused = trigger;
+          syncVisibleCards();
+          showLightbox(card, Number(trigger.dataset.proofIndex || 0));
+        });
       });
     });
 
