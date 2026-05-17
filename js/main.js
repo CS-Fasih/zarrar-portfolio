@@ -434,6 +434,81 @@
     });
   }
 
+  function setupVideoModal() {
+    const modal = document.getElementById("video-lightbox");
+    const frame = document.getElementById("video-lightbox-frame");
+    const title = document.getElementById("video-lightbox-title");
+    const code = document.getElementById("video-lightbox-code");
+    const link = document.getElementById("video-lightbox-link");
+    const triggers = Array.from(document.querySelectorAll("[data-video-id]"));
+    if (!modal || !frame || !triggers.length) {
+      return;
+    }
+
+    const closeButtons = modal.querySelectorAll("[data-video-close]");
+    let lastFocused = null;
+
+    function closeVideo() {
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      frame.removeAttribute("src");
+      frame.title = "";
+      document.body.classList.remove("lightbox-open");
+      if (lastFocused) {
+        lastFocused.focus();
+      }
+    }
+
+    function openVideo(trigger) {
+      const videoId = trigger.dataset.videoId || "";
+      const videoTitle = trigger.dataset.videoTitle || "FYP Video Demo";
+      const videoCode = trigger.dataset.videoCode || "FYP";
+      const videoUrl = trigger.dataset.videoUrl || `https://youtu.be/${videoId}`;
+      if (!videoId) {
+        return;
+      }
+
+      lastFocused = trigger;
+      if (!/^https?:$/.test(window.location.protocol)) {
+        window.open(videoUrl, "_blank", "noopener,noreferrer");
+        return;
+      }
+
+      const origin = window.location.origin ? `&origin=${encodeURIComponent(window.location.origin)}` : "";
+      frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0${origin}`;
+      frame.title = `${videoTitle} video demo`;
+      if (title) {
+        title.textContent = videoTitle;
+      }
+      if (code) {
+        code.textContent = `${videoCode} · YouTube demo`;
+      }
+      if (link) {
+        link.href = videoUrl;
+      }
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      const closeButton = modal.querySelector(".video-close");
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => openVideo(trigger));
+    });
+    closeButtons.forEach((button) => button.addEventListener("click", closeVideo));
+    document.addEventListener("keydown", (event) => {
+      if (modal.hidden) {
+        return;
+      }
+      if (event.key === "Escape") {
+        closeVideo();
+      }
+    });
+  }
+
   function setupHolographicGlow() {
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -474,6 +549,7 @@
   setupContactForm();
   setupCopyEmail();
   setupEvidenceGallery();
+  setupVideoModal();
   setupHolographicGlow();
   updateScrollState();
   window.addEventListener("scroll", updateScrollState, { passive: true });
