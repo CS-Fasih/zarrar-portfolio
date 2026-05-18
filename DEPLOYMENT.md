@@ -32,7 +32,7 @@ Environment variables:
 SMTP_USER=zarrarabbas73@gmail.com
 SMTP_PASS=<Gmail App Password>
 CONTACT_RECEIVER=zarrarabbas73@gmail.com
-CLIENT_URL=https://zarrar-portfolio.vercel.app
+CLIENT_URL=https://zarrar-portfolio-nine.vercel.app
 ```
 
 The frontend currently sends production contact requests to:
