@@ -3,7 +3,7 @@
 This portfolio is split into two free-hostable parts:
 
 - Frontend: static HTML/CSS/JS on Vercel Hobby.
-- Contact API: Node/Express service on Render Free.
+- Contact API: Vercel serverless function at `/api/contact`.
 
 ## Frontend On Vercel
 
@@ -22,11 +22,22 @@ zarrar-portfolio
 
 The project is configured for a static Vercel deployment with `vercel.json`, and `.vercelignore` keeps backend files out of the public frontend deployment.
 
-## Contact API On Render
+## Contact API On Vercel
 
-Create a new Render Web Service from this GitHub repository and use the `server/` directory as the service root. The included `render.yaml` can also be used as a Render Blueprint.
+The production frontend sends contact form submissions to:
 
-Environment variables:
+```text
+/api/contact
+```
+
+That endpoint is implemented in:
+
+```text
+api/contact.js
+```
+
+Set these Vercel project environment variables for production:
+
 
 ```text
 SMTP_USER=zarrarabbas73@gmail.com
@@ -35,10 +46,12 @@ CONTACT_RECEIVER=zarrarabbas73@gmail.com
 CLIENT_URL=https://zarrar-portfolio-nine.vercel.app
 ```
 
-The frontend currently sends production contact requests to:
+Then deploy:
 
-```text
-https://zarrar-portfolio-api.onrender.com/api/contact
+```bash
+vercel deploy --prod
 ```
 
-If Render gives the backend a different URL, update `PRODUCTION_CONTACT_API` in `js/main.js` and push the change.
+## Optional Render Backend
+
+The `server/` Express backend and `render.yaml` remain in the repository if a separate Render backend is needed later. Render must have GitHub access to the repository before it can create that service.

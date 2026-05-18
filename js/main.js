@@ -20,7 +20,7 @@
     })
     .filter(Boolean);
   const LOCAL_CONTACT_API = "http://localhost:3001/api/contact";
-  const PRODUCTION_CONTACT_API = "https://zarrar-portfolio-api.onrender.com/api/contact";
+  const PRODUCTION_CONTACT_API = "/api/contact";
   const CONTACT_API = ["localhost", "127.0.0.1"].includes(window.location.hostname)
     ? LOCAL_CONTACT_API
     : PRODUCTION_CONTACT_API;
