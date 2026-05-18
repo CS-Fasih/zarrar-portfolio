@@ -190,6 +190,17 @@
     });
   }
 
+  function setupBackToTop() {
+    if (!backToTop) {
+      return;
+    }
+
+    backToTop.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    });
+  }
+
   function setFormStatus(message, type) {
     const status = contactForm && contactForm.querySelector(".form-status");
     if (!status) {
@@ -546,6 +557,7 @@
   setupReveal();
   setupCounters();
   setupMenu();
+  setupBackToTop();
   setupContactForm();
   setupCopyEmail();
   setupEvidenceGallery();
