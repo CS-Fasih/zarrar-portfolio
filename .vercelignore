@@ -2,6 +2,8 @@
 .env
 server/
 FYP_Portfolio_Details.txt
+DEPLOYMENT.md
+render.yaml
 node_modules/
 *.log
 .DS_Store
