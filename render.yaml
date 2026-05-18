@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: zarrar-portfolio-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: CONTACT_RECEIVER
+        sync: false
+      - key: CLIENT_URL
+        sync: false
