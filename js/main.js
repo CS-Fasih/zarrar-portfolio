@@ -528,13 +528,8 @@
     }
 
     const cards = document.querySelectorAll([
-      ".stat-card",
-      ".focus-card",
-      ".skill-category",
-      ".project-card",
       ".evidence-card",
-      ".video-card",
-      ".achievement-card"
+      ".video-card"
     ].join(", "));
 
     cards.forEach((card) => {

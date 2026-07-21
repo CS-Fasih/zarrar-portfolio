@@ -647,15 +647,6 @@ select {
   background-size: 220% 220%;
 }
 
-.tags span:hover,
-.tags span:focus-within {
-  color: #fff;
-  border-color: transparent;
-  background-image: linear-gradient(135deg, var(--primary), var(--secondary));
-  background-position: 100% 50%;
-  transform: translateY(-2px);
-}
-
 .projects-section {
   background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(0,153,204,0.07));
 }
@@ -672,8 +663,8 @@ select {
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
-.project-card:hover,
-.project-card:focus-within {
+.project-card.featured:hover,
+.project-card.featured:focus-within {
   transform: translateY(-4px);
   border-left-color: var(--primary);
   box-shadow: 0 16px 38px rgba(119,0,204,0.13);
@@ -1351,11 +1342,6 @@ select {
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
-.achievement-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 42px rgba(119,0,204,0.13);
-}
-
 .achievement-card > span {
   width: 58px;
   height: 58px;
@@ -1558,13 +1544,8 @@ select {
   pointer-events: auto;
 }
 
-.stat-card,
-.reveal.visible.focus-card,
-.reveal.visible.skill-category,
-.reveal.visible.project-card,
 .reveal.visible.evidence-card,
-.reveal.visible.video-card,
-.reveal.visible.achievement-card {
+.reveal.visible.video-card {
   --mx: 50%;
   --my: 50%;
   --lift-y: 0px;
@@ -1580,13 +1561,8 @@ select {
   will-change: transform, box-shadow;
 }
 
-.stat-card::before,
-.reveal.visible.focus-card::before,
-.reveal.visible.skill-category::before,
-.reveal.visible.project-card::before,
 .reveal.visible.evidence-card::before,
-.reveal.visible.video-card::before,
-.reveal.visible.achievement-card::before {
+.reveal.visible.video-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1600,13 +1576,8 @@ select {
   transition: opacity 0.22s ease;
 }
 
-.stat-card::after,
-.reveal.visible.focus-card::after,
-.reveal.visible.skill-category::after,
-.reveal.visible.project-card::after,
 .reveal.visible.evidence-card::after,
-.reveal.visible.video-card::after,
-.reveal.visible.achievement-card::after {
+.reveal.visible.video-card::after {
   content: "";
   position: absolute;
   left: 16px;
@@ -1621,64 +1592,32 @@ select {
   transition: opacity 0.22s ease;
 }
 
-.stat-card > *,
-.reveal.visible.focus-card > *,
-.reveal.visible.skill-category > *,
-.reveal.visible.project-card > *,
 .reveal.visible.evidence-card > *,
-.reveal.visible.video-card > *,
-.reveal.visible.achievement-card > * {
+.reveal.visible.video-card > * {
   position: relative;
   z-index: 1;
 }
 
-.stat-card:hover,
-.reveal.visible.focus-card:hover,
-.reveal.visible.skill-category:hover,
-.reveal.visible.project-card:hover,
 .reveal.visible.evidence-card:hover,
-.reveal.visible.video-card:hover,
-.reveal.visible.achievement-card:hover {
+.reveal.visible.video-card:hover {
   --lift-y: -4px;
   border-color: rgba(0,153,204,0.36);
   box-shadow: 0 16px 38px rgba(85,0,122,0.14);
 }
 
-.stat-card:hover::before,
-.stat-card:hover::after,
-.reveal.visible.focus-card:hover::before,
-.reveal.visible.focus-card:hover::after,
-.reveal.visible.skill-category:hover::before,
-.reveal.visible.skill-category:hover::after,
-.reveal.visible.project-card:hover::before,
-.reveal.visible.project-card:hover::after,
 .reveal.visible.evidence-card:hover::before,
 .reveal.visible.evidence-card:hover::after,
 .reveal.visible.video-card:hover::before,
-.reveal.visible.video-card:hover::after,
-.reveal.visible.achievement-card:hover::before,
-.reveal.visible.achievement-card:hover::after {
+.reveal.visible.video-card:hover::after {
   opacity: 0.48;
 }
 
-.reveal.visible.project-card:hover {
-  border-left-color: var(--primary);
-}
-
-.reveal.visible.skill-category h3,
-.reveal.visible.focus-card h3,
-.reveal.visible.project-card h3,
 .reveal.visible.evidence-card h3,
-.reveal.visible.achievement-card h3,
-.reveal.visible.video-card h3,
-.stat-card strong {
+.reveal.visible.video-card h3 {
   transform: none;
 }
 
 .reveal.visible .tags span,
-.reveal.visible.focus-card .focus-mark,
-.reveal.visible.project-card .badge,
-.reveal.visible.project-card .project-year,
 .reveal.visible.evidence-card .evidence-code,
 .reveal.visible.evidence-card .evidence-open,
 .reveal.visible.video-card .video-code {
@@ -1911,12 +1850,6 @@ select {
   transform: translate3d(0, 0, 0);
   box-shadow: 0 14px 38px rgba(119,0,204,0.08);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
-}
-
-.reveal.visible.timeline-item:hover {
-  transform: translate3d(0, -4px, 0);
-  border-color: rgba(0,153,204,0.34);
-  box-shadow: 0 24px 58px rgba(85,0,122,0.14);
 }
 
 .section-heading.reveal.visible {
