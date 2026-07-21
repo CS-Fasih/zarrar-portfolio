@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260519-contact-api">
+  <link rel="stylesheet" href="css/style.css?v=20260721-vr-showcase">
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
@@ -231,8 +231,8 @@
           <h2 id="evidence-title">Real module screenshots from the VR learning platform.</h2>
         </div>
         <div class="evidence-summary reveal">
-          <span><strong>40</strong> optimized screenshots</span>
-          <span><strong>10</strong> subject modules</span>
+          <span><strong>44</strong> optimized screenshots</span>
+          <span><strong>12</strong> showcased modules</span>
           <span><strong>0</strong> bundled videos</span>
         </div>
         <div class="evidence-filters reveal" role="group" aria-label="Filter FYP evidence by module">
@@ -247,6 +247,8 @@
           <button class="evidence-filter" type="button" data-filter="dld" aria-pressed="false">DLD <span>2</span></button>
           <button class="evidence-filter" type="button" data-filter="dsa" aria-pressed="false">DSA <span>2</span></button>
           <button class="evidence-filter" type="button" data-filter="os" aria-pressed="false">OS <span>3</span></button>
+          <button class="evidence-filter" type="button" data-filter="fire" aria-pressed="false">Fire Safety <span>2</span></button>
+          <button class="evidence-filter" type="button" data-filter="mazar" aria-pressed="false">Mazar-e-Quaid <span>2</span></button>
         </div>
         <div class="evidence-grid" id="evidence-grid">
           <article class="evidence-card reveal" data-module="ai" data-module-label="Artificial Intelligence">
@@ -379,6 +381,28 @@
             </div>
             <div class="evidence-meta"><div><h3>Operating System</h3><p>3 screenshots grouped in one module card</p></div><span class="evidence-count">3 proofs</span></div>
           </article>
+          <article class="evidence-card reveal" data-module="fire" data-module-label="Fire Extinguisher Safety">
+            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Fire Extinguisher Safety proof gallery">
+              <img class="evidence-cover" src="assets/fyp/fire-extinguisher/fire-01.png" data-proof-image loading="lazy" alt="Fire Extinguisher Safety VR module screenshot 1">
+              <span class="evidence-code">FIRE</span>
+              <span class="evidence-open">Open 2 proofs</span>
+            </button>
+            <div class="evidence-mini-row">
+              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Fire Extinguisher Safety screenshot 2"><img src="assets/fyp/fire-extinguisher/fire-02.png" data-proof-image loading="lazy" alt="Fire Extinguisher Safety VR module screenshot 2"></button>
+            </div>
+            <div class="evidence-meta"><div><h3>Fire Extinguisher Safety</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
+          </article>
+          <article class="evidence-card reveal" data-module="mazar" data-module-label="Mazar-e-Quaid Digital Twin">
+            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Mazar-e-Quaid Digital Twin proof gallery">
+              <img class="evidence-cover" src="assets/fyp/mazar-e-quaid/mazar-01.png" data-proof-image loading="lazy" alt="Mazar-e-Quaid Digital Twin screenshot 1">
+              <span class="evidence-code">MQD</span>
+              <span class="evidence-open">Open 2 proofs</span>
+            </button>
+            <div class="evidence-mini-row">
+              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Mazar-e-Quaid Digital Twin screenshot 2"><img src="assets/fyp/mazar-e-quaid/mazar-02.png" data-proof-image loading="lazy" alt="Mazar-e-Quaid Digital Twin screenshot 2"></button>
+            </div>
+            <div class="evidence-meta"><div><h3>Mazar-e-Quaid Digital Twin</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
+          </article>
         </div>
       </div>
     </section>
@@ -390,8 +414,8 @@
           <h2 id="videos-title">Module walkthroughs and AI assistant demos on YouTube.</h2>
         </div>
         <div class="video-summary reveal">
-          <span><strong>9</strong> linked video demos</span>
-          <span><strong>8</strong> subject modules</span>
+          <span><strong>10</strong> linked video demos</span>
+          <span><strong>9</strong> subject modules</span>
           <span><strong>1</strong> AI avatar demo</span>
         </div>
         <div class="video-grid">
@@ -466,6 +490,15 @@
               <span class="video-action">Play demo</span>
             </button>
             <div class="video-meta"><span>Module Demo</span><h3>Operating System</h3><p>Operating System module walkthrough for VR-based topic exploration.</p><a class="inline-link" href="https://youtu.be/bViSNzEl70g" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
+          </article>
+          <article class="video-card reveal">
+            <button class="video-shell" type="button" data-video-id="YENkOdrg46k" data-video-code="FIRE" data-video-title="Fire Extinguisher Safety" data-video-url="https://youtu.be/YENkOdrg46k" aria-label="Play Fire Extinguisher Safety video demo">
+              <img src="assets/fyp/fire-extinguisher/fire-02.png" alt="Fire Extinguisher Safety VR module screenshot" loading="lazy">
+              <span class="video-code">FIRE</span>
+              <span class="video-play" aria-hidden="true">&#9658;</span>
+              <span class="video-action">Play demo</span>
+            </button>
+            <div class="video-meta"><span>Safety Module Demo</span><h3>Fire Extinguisher Safety</h3><p>Interactive fire-response scenario demonstrating the extinguisher training module inside the VR platform.</p><a class="inline-link" href="https://youtu.be/YENkOdrg46k" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
           </article>
           <article class="video-card reveal">
             <button class="video-shell" type="button" data-video-id="CTyaDWUiSN8" data-video-code="SAGE" data-video-title="AI Assistant Avatar" data-video-url="https://youtu.be/CTyaDWUiSN8" aria-label="Play AI Assistant Avatar video demo">
@@ -633,7 +666,7 @@
   <a class="back-to-top" href="#top" aria-label="Back to top">&uarr;</a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/hero3d.js?v=20260519-contact-api"></script>
-  <script src="js/main.js?v=20260519-contact-api"></script>
+  <script src="js/hero3d.js?v=20260721-vr-showcase"></script>
+  <script src="js/main.js?v=20260721-vr-showcase"></script>
 </body>
 </html>
