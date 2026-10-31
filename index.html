@@ -3,670 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zarrar Abbas - AR/VR Developer, Python Developer, and AI/ML Enthusiast from Karachi, Pakistan.">
-  <title>Zarrar Abbas | AR/VR Developer</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23faf7ff'/%3E%3Cpath d='M16 43 39 19H18v-6h31v6L26 43h23v6H16z' fill='%237700cc'/%3E%3Ccircle cx='48' cy='16' r='6' fill='%230099cc'/%3E%3C/svg%3E">
+  <title>Zarrar Abbas — XR Engineer</title>
+  <meta name="description" content="Zarrar Abbas builds immersive VR labs for engineering and computer science education with Vizard 8 and SightLab VR Pro.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161a'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%23fff'%3EZA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260721-vr-showcase">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20261031">
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <header class="site-header" id="top">
-    <nav class="navbar" aria-label="Primary navigation">
-      <a class="logo" href="#top" aria-label="Zarrar Abbas home">zarrar<span>.</span>dev</a>
-      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#evidence">Proof</a>
-        <a href="#videos">Videos</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#contact">Hire Me &rarr;</a>
-      </div>
+  <header class="top">
+    <a class="mark" href="#">Zarrar Abbas</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#fyp">FYP</a>
+      <a href="#about">About</a>
+      <a href="Zarrar_Abbas_CV.pdf">CV</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
-      <div class="hero-overlay"></div>
-      <div class="hero-content reveal">
-        <p class="eyebrow">&#11041; DUET KARACHI · CGPA 3.65 · 2026</p>
-        <h1 id="hero-title">Zarrar<br>Abbas</h1>
-        <p class="typewriter-line">
-          <span id="typewriter" aria-live="polite">AR/VR Developer</span><span class="cursor" aria-hidden="true"></span>
-        </p>
-        <p class="hero-bio">Bridging immersive technology with intelligent systems.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">View My Work</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/zarrar-abbas-75b85630b" target="_blank" rel="noreferrer">LinkedIn &#8599;</a>
-          <a class="btn btn-light" href="Zarrar_Abbas_CV.pdf" download>Download CV</a>
-        </div>
-      </div>
-      <div class="hero-bottom">
-        <div class="scroll-hint" aria-hidden="true">
-          <span></span>
-          <strong>SCROLL TO EXPLORE</strong>
-        </div>
-        <div class="hero-stats" aria-label="Quick stats">
-          <span><strong>3.65</strong><em>CGPA</em></span>
-          <span><strong>12+</strong><em>VR Modules</em></span>
-          <span><strong>5+</strong><em>Projects</em></span>
-          <span><strong>1st</strong><em>Scholarship</em></span>
-        </div>
-      </div>
+    <section class="intro">
+      <h1>I build VR labs that let students <em>see</em> how engineering and computing work.</h1>
+      <p class="lede">XR Engineer in Karachi. I develop immersive simulations in Vizard&nbsp;8 and SightLab&nbsp;VR&nbsp;Pro, with eye tracking to measure how students learn. Looking for a funded MS / research assistant position in immersive learning.</p>
+      <p class="links">
+        <a href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a>
+        <a href="https://github.com/Zarrar110" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/zarrar-abbas-75b85630b" target="_blank" rel="noreferrer">LinkedIn</a>
+      </p>
+      <figure class="hero-shot">
+        <img src="assets/fyp/ap-05.webp" alt="VR physics module: projectile launched at 45 degrees with live velocity, height and range readouts" width="1277" height="856">
+        <figcaption>Projectile motion module — velocity components, peak height and range update live as the student changes the launch.</figcaption>
+      </figure>
     </section>
 
-    <section class="section about-section" id="about" aria-labelledby="about-title">
-      <div class="section-inner about-grid">
-        <div class="section-copy reveal">
-          <p class="section-kicker">About</p>
-          <h2 id="about-title">Immersive systems with an intelligent core.</h2>
-          <p>Zarrar Abbas is a Computer Science graduate from Dawood University of Engineering & Technology, Karachi — specialising in AR/VR development, Python, and AI/ML.</p>
-          <p>His work sits at the meeting point of spatial computing, computer vision, automation, and machine learning. As a scholarship awardee with a 3.65 CGPA, he brings academic discipline into practical engineering.</p>
-          <p>His final year project, an immersive VR educational platform, turns complex CS and engineering subjects into interactive 3D learning environments powered by Vizard 8, Meta Quest Pro, SightLab analytics, and a voice-activated AI tutor.</p>
-        </div>
-        <div class="stats-grid reveal">
-          <article class="stat-card stat" data-target="3.65" data-decimals="2" data-suffix="">
-            <strong><span class="count-value">0</span></strong>
-            <span>CGPA</span>
-          </article>
-          <article class="stat-card stat" data-target="12" data-decimals="0" data-suffix="+">
-            <strong><span class="count-value">0</span><em>+</em></strong>
-            <span>VR Modules Built</span>
-          </article>
-          <article class="stat-card stat" data-target="5" data-decimals="0" data-suffix="+">
-            <strong><span class="count-value">0</span><em>+</em></strong>
-            <span>Projects Completed</span>
-          </article>
-          <article class="stat-card stat" data-target="1" data-decimals="0" data-suffix="">
-            <strong><span class="count-value">0</span></strong>
-            <span>Scholarship Award</span>
-          </article>
-        </div>
-      </div>
+    <section id="work" class="block">
+      <h2>Engineering VR labs <span>2026 · Vizard 8, Python, Blender</span></h2>
+      <p class="sub">Built at AIDL, the WorldViz distributor in Pakistan, for university engineering departments.</p>
+      <div class="labs" id="labs"></div>
     </section>
 
-    <section class="section focus-section" id="focus" aria-labelledby="focus-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Focus Areas</p>
-          <h2 id="focus-title">Practical builds for immersive learning, AI support, and Python systems.</h2>
-        </div>
-        <div class="focus-grid">
-          <article class="focus-card reveal">
-            <span class="focus-mark" aria-hidden="true">VR</span>
-            <h3>Immersive Learning Modules</h3>
-            <p>Interactive subject rooms, 3D model flows, Meta Quest controls, and Vizard-based scene scripting for learning environments.</p>
-          </article>
-          <article class="focus-card reveal">
-            <span class="focus-mark" aria-hidden="true">AI</span>
-            <h3>AI Tutor Workflows</h3>
-            <p>Voice-triggered assistant behavior, Gemini API responses, text-to-speech pipelines, and contextual help inside VR modules.</p>
-          </article>
-          <article class="focus-card reveal">
-            <span class="focus-mark" aria-hidden="true">PY</span>
-            <h3>Python Automation</h3>
-            <p>Flask utilities, scraping workflows, data tools, and automation scripts built around practical institutional needs.</p>
-          </article>
-          <article class="focus-card reveal">
-            <span class="focus-mark" aria-hidden="true">CV</span>
-            <h3>Vision &amp; Secure Systems</h3>
-            <p>OpenCV pipelines, machine learning experiments, vulnerability monitoring, threat analysis, and reporting workflows.</p>
-          </article>
-        </div>
+    <section id="fyp" class="block">
+      <h2>A&amp;VR Interactive Learning System <span>Final Year Project · 2026</span></h2>
+      <div class="fyp-head">
+        <p>Twelve VR modules that turn abstract CS topics into rooms you can walk through: a RISC pipeline you step cycle by cycle, a SQL query moving through the optimizer, packets encrypted in front of you. SightLab logs gaze fixations, dwell time and controller paths in every module for learning analysis.</p>
+        <dl class="facts">
+          <div><dt>Modules</dt><dd>12</dd></div>
+          <div><dt>Stack</dt><dd>Vizard 8, SightLab, Meta Quest Pro</dd></div>
+          <div><dt>Recognition</dt><dd>2nd place, DUET FICS exhibition; IEEEP Students Seminar</dd></div>
+          <div><dt>Supervisor</dt><dd>Dr. Syed Ali Asgher</dd></div>
+        </dl>
       </div>
+      <div class="grid" id="modules"></div>
     </section>
 
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Skills</p>
-          <h2 id="skills-title">A toolkit for AR/VR, Python, AI, and secure systems.</h2>
-        </div>
-        <div class="skills-grid">
-          <article class="skill-category reveal">
-            <h3>AR/VR &amp; Immersive Tech</h3>
-            <div class="tags">
-              <span>Vizard 8</span><span>SightLab VR Pro</span><span>Meta Quest Pro</span><span>Eye-Tracking</span><span>3D Interaction Scripting</span><span>OpenVR</span><span>VizConnect</span><span>Google Gemini API</span><span>PyTTSx3</span><span>PiperTTS</span><span>SpeechRecognition</span><span>OsgB Models</span>
-            </div>
-          </article>
-          <article class="skill-category reveal">
-            <h3>AI / ML &amp; Computer Vision</h3>
-            <div class="tags">
-              <span>Python</span><span>OpenCV</span><span>Scikit-learn</span><span>Machine Learning</span><span>Computer Vision</span><span>Data Prediction</span><span>Visualization Libraries</span>
-            </div>
-          </article>
-          <article class="skill-category reveal">
-            <h3>Web &amp; Automation</h3>
-            <div class="tags">
-              <span>Flask</span><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>BeautifulSoup</span><span>Selenium</span><span>Web Scraping</span><span>Full-Stack Development</span>
-            </div>
-          </article>
-          <article class="skill-category reveal">
-            <h3>Security &amp; Systems</h3>
-            <div class="tags">
-              <span>Penetration Testing</span><span>Cybersecurity</span><span>Network Vulnerability Analysis</span><span>Threat Detection</span><span>MySQL</span><span>SQL</span><span>Security Reporting</span>
-            </div>
-          </article>
-          <article class="skill-category reveal">
-            <h3>Languages &amp; Tools</h3>
-            <div class="tags">
-              <span>Python</span><span>Java</span><span>C#</span><span>Git</span><span>GitHub</span><span>Technical Documentation</span><span>Ticketing Systems</span>
-            </div>
-          </article>
-        </div>
-      </div>
+    <section class="block">
+      <h2>Other work</h2>
+      <ul class="other">
+        <li>
+          <a href="https://github.com/Zarrar110/vizard-mcp" target="_blank" rel="noreferrer">vizard-mcp</a>
+          <span>MCP server that lets AI assistants build and edit Vizard 8 scenes.</span>
+        </li>
+        <li>
+          <button type="button" data-gallery="mazar">Mazar-e-Quaid digital twin</button>
+          <span>3D reconstruction of a Karachi landmark for virtual heritage tours.</span>
+        </li>
+        <li>
+          <button type="button" data-gallery="fire">Fire extinguisher training</button>
+          <span>VR safety scenario: identify the fire class, pick and use the right extinguisher. <a href="https://youtu.be/YENkOdrg46k" target="_blank" rel="noreferrer">Video</a></span>
+        </li>
+        <li>
+          <a href="https://youtu.be/CTyaDWUiSN8" target="_blank" rel="noreferrer">Sage, AI tutor avatar</a>
+          <span>Voice-activated Gemini tutor with speech and lip-sync inside the VR modules.</span>
+        </li>
+        <li>
+          <span class="name">Smart attendance</span>
+          <span>Real-time face recognition attendance with OpenCV.</span>
+        </li>
+      </ul>
     </section>
 
-    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Projects</p>
-          <h2 id="projects-title">Featured builds across VR, AI, automation, and data.</h2>
-        </div>
-        <div class="project-grid">
-          <article class="project-card featured reveal">
-            <div class="project-card-header">
-              <span class="badge">Final Year Project</span>
-              <span class="project-year">2026</span>
-            </div>
-            <h3>Immersive VR Educational Platform</h3>
-            <p>Meta Quest Pro-compatible VR ecosystem with 12 educational modules for CS and Engineering students, built to transform abstract topics into spatial, interactive learning labs.</p>
-            <ul class="project-points">
-              <li>AI tutor "Sage" powered by Google Gemini API with voice activation, contextual answers, gestures, and lip-sync.</li>
-              <li>Eye-tracking and learning analytics through SightLab VR Pro.</li>
-              <li>Modules: DAA, DSA, AI, OOP, OS, COAL, DBS, PF, Applied Physics, Electronics, DLD, and DCN.</li>
-              <li>Multithreaded non-blocking voice, TTS, and VR rendering pipeline in Python.</li>
-            </ul>
-            <div class="tags compact">
-              <span>Python</span><span>Vizard 8</span><span>Gemini API</span><span>Meta Quest</span><span>SightLab</span>
-            </div>
-            <div class="project-actions">
-              <a class="inline-link" href="#evidence">View FYP proof gallery &rarr;</a>
-              <a class="inline-link" href="#videos">Watch module videos &rarr;</a>
-            </div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-card-header">
-              <span class="badge soft">Computer Vision</span>
-            </div>
-            <h3>Smart Attendance System</h3>
-            <p>Real-time facial recognition attendance workflow built for reliable institutional use.</p>
-            <div class="tags compact"><span>Python</span><span>OpenCV</span><span>Machine Learning</span></div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-card-header">
-              <span class="badge soft">Machine Learning</span>
-            </div>
-            <h3>Data Prediction &amp; Visualization System</h3>
-            <p>Prediction pipeline with interactive visualizations for interpreting patterns and model outputs.</p>
-            <div class="tags compact"><span>Python</span><span>Scikit-learn</span><span>Data Analysis</span></div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-card-header">
-              <span class="badge soft">Automation</span>
-            </div>
-            <h3>Python Web Scraping Suite</h3>
-            <p>Full-stack scraping toolkit with GUI workflows and a Flask web application for automation tasks.</p>
-            <div class="tags compact"><span>Python</span><span>BeautifulSoup</span><span>Selenium</span><span>Flask</span></div>
-          </article>
-        </div>
+    <section id="about" class="block about">
+      <h2>About</h2>
+      <div class="about-cols">
+        <p>BS Computer Science, Dawood University of Engineering &amp; Technology, Karachi (CGPA 3.65, merit scholarship). I now work as an XR engineer at AIDL, building Vizard content and supporting university VR installations. I'm interested in how immersive simulation and eye tracking can measure and improve learning in engineering and safety training.</p>
+        <ol class="cv">
+          <li><span>2026 —</span> XR Engineer, AIDL (WorldViz Pakistan)</li>
+          <li><span>2024–25</span> Cybersecurity Analyst, Cybarrier Solutions</li>
+          <li><span>2023–24</span> IT Intern, Pakistan Aeronautical Complex</li>
+          <li><span>2022–26</span> BS Computer Science, DUET</li>
+        </ol>
       </div>
-    </section>
-
-    <section class="section evidence-section" id="evidence" aria-labelledby="evidence-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">FYP Evidence</p>
-          <h2 id="evidence-title">Real module screenshots from the VR learning platform.</h2>
-        </div>
-        <div class="evidence-summary reveal">
-          <span><strong>44</strong> optimized screenshots</span>
-          <span><strong>12</strong> showcased modules</span>
-          <span><strong>0</strong> bundled videos</span>
-        </div>
-        <div class="evidence-filters reveal" role="group" aria-label="Filter FYP evidence by module">
-          <button class="evidence-filter active" type="button" data-filter="all" aria-pressed="true">All <span>10</span></button>
-          <button class="evidence-filter" type="button" data-filter="ai" aria-pressed="false">AI <span>4</span></button>
-          <button class="evidence-filter" type="button" data-filter="ap" aria-pressed="false">AP <span>8</span></button>
-          <button class="evidence-filter" type="button" data-filter="be" aria-pressed="false">BE <span>6</span></button>
-          <button class="evidence-filter" type="button" data-filter="coal" aria-pressed="false">COAL <span>2</span></button>
-          <button class="evidence-filter" type="button" data-filter="daa" aria-pressed="false">DAA <span>4</span></button>
-          <button class="evidence-filter" type="button" data-filter="dbs" aria-pressed="false">DBS <span>6</span></button>
-          <button class="evidence-filter" type="button" data-filter="dcn" aria-pressed="false">DCN <span>3</span></button>
-          <button class="evidence-filter" type="button" data-filter="dld" aria-pressed="false">DLD <span>2</span></button>
-          <button class="evidence-filter" type="button" data-filter="dsa" aria-pressed="false">DSA <span>2</span></button>
-          <button class="evidence-filter" type="button" data-filter="os" aria-pressed="false">OS <span>3</span></button>
-          <button class="evidence-filter" type="button" data-filter="fire" aria-pressed="false">Fire Safety <span>2</span></button>
-          <button class="evidence-filter" type="button" data-filter="mazar" aria-pressed="false">Mazar-e-Quaid <span>2</span></button>
-        </div>
-        <div class="evidence-grid" id="evidence-grid">
-          <article class="evidence-card reveal" data-module="ai" data-module-label="Artificial Intelligence">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Artificial Intelligence proof gallery">
-              <img class="evidence-cover" src="assets/fyp/ai-01.webp" data-proof-image loading="lazy" alt="Artificial Intelligence VR module screenshot 1">
-              <span class="evidence-code">AI</span>
-              <span class="evidence-open">Open 4 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Artificial Intelligence screenshot 2"><img src="assets/fyp/ai-02.webp" data-proof-image loading="lazy" alt="Artificial Intelligence VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Artificial Intelligence screenshot 3"><img src="assets/fyp/ai-03.webp" data-proof-image loading="lazy" alt="Artificial Intelligence VR module screenshot 3"></button>
-              <button class="evidence-mini" type="button" data-proof-index="3" aria-label="Open Artificial Intelligence screenshot 4"><img src="assets/fyp/ai-04.webp" data-proof-image loading="lazy" alt="Artificial Intelligence VR module screenshot 4"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Artificial Intelligence</h3><p>4 screenshots grouped in one module card</p></div><span class="evidence-count">4 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="ap" data-module-label="Applied Physics">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Applied Physics proof gallery">
-              <img class="evidence-cover" src="assets/fyp/ap-01.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 1">
-              <span class="evidence-code">AP</span>
-              <span class="evidence-open">Open 8 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Applied Physics screenshot 2"><img src="assets/fyp/ap-02.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Applied Physics screenshot 3"><img src="assets/fyp/ap-03.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 3"></button>
-              <button class="evidence-mini" type="button" data-proof-index="3" aria-label="Open Applied Physics screenshot 4"><img src="assets/fyp/ap-04.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 4"></button>
-              <button class="evidence-mini" type="button" data-proof-index="4" aria-label="Open Applied Physics screenshot 5"><img src="assets/fyp/ap-05.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 5"></button>
-              <button class="evidence-mini" type="button" data-proof-index="5" aria-label="Open Applied Physics screenshot 6"><img src="assets/fyp/ap-06.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 6"></button>
-              <button class="evidence-mini" type="button" data-proof-index="6" aria-label="Open Applied Physics screenshot 7"><img src="assets/fyp/ap-07.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 7"></button>
-              <button class="evidence-mini" type="button" data-proof-index="7" aria-label="Open Applied Physics screenshot 8"><img src="assets/fyp/ap-08.webp" data-proof-image loading="lazy" alt="Applied Physics VR module screenshot 8"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Applied Physics</h3><p>8 screenshots grouped in one module card</p></div><span class="evidence-count">8 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="be" data-module-label="Basic Electronics / Basic Electrical Engineering">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Basic Electronics proof gallery">
-              <img class="evidence-cover" src="assets/fyp/be-01.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 1">
-              <span class="evidence-code">BE</span>
-              <span class="evidence-open">Open 6 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Basic Electronics screenshot 2"><img src="assets/fyp/be-02.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Basic Electronics screenshot 3"><img src="assets/fyp/be-03.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 3"></button>
-              <button class="evidence-mini" type="button" data-proof-index="3" aria-label="Open Basic Electronics screenshot 4"><img src="assets/fyp/be-04.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 4"></button>
-              <button class="evidence-mini" type="button" data-proof-index="4" aria-label="Open Basic Electronics screenshot 5"><img src="assets/fyp/be-05.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 5"></button>
-              <button class="evidence-mini" type="button" data-proof-index="5" aria-label="Open Basic Electronics screenshot 6"><img src="assets/fyp/be-06.webp" data-proof-image loading="lazy" alt="Basic Electronics VR module screenshot 6"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Basic Electronics / Basic Electrical Engineering</h3><p>6 screenshots grouped in one module card</p></div><span class="evidence-count">6 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="coal" data-module-label="Computer Organization and Assembly Language">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Computer Organization and Assembly Language proof gallery">
-              <img class="evidence-cover" src="assets/fyp/coal-01.webp" data-proof-image loading="lazy" alt="Computer Organization and Assembly Language VR module screenshot 1">
-              <span class="evidence-code">COAL</span>
-              <span class="evidence-open">Open 2 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Computer Organization and Assembly Language screenshot 2"><img src="assets/fyp/coal-02.webp" data-proof-image loading="lazy" alt="Computer Organization and Assembly Language VR module screenshot 2"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Computer Organization and Assembly Language</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="daa" data-module-label="Design and Analysis of Algorithms">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Design and Analysis of Algorithms proof gallery">
-              <img class="evidence-cover" src="assets/fyp/daa-01.webp" data-proof-image loading="lazy" alt="Design and Analysis of Algorithms VR module screenshot 1">
-              <span class="evidence-code">DAA</span>
-              <span class="evidence-open">Open 4 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Design and Analysis of Algorithms screenshot 2"><img src="assets/fyp/daa-02.webp" data-proof-image loading="lazy" alt="Design and Analysis of Algorithms VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Design and Analysis of Algorithms screenshot 3"><img src="assets/fyp/daa-03.webp" data-proof-image loading="lazy" alt="Design and Analysis of Algorithms VR module screenshot 3"></button>
-              <button class="evidence-mini" type="button" data-proof-index="3" aria-label="Open Design and Analysis of Algorithms screenshot 4"><img src="assets/fyp/daa-04.webp" data-proof-image loading="lazy" alt="Design and Analysis of Algorithms VR module screenshot 4"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Design and Analysis of Algorithms</h3><p>4 screenshots grouped in one module card</p></div><span class="evidence-count">4 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="dbs" data-module-label="Database Systems">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Database Systems proof gallery">
-              <img class="evidence-cover" src="assets/fyp/dbs-01.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 1">
-              <span class="evidence-code">DBS</span>
-              <span class="evidence-open">Open 6 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Database Systems screenshot 2"><img src="assets/fyp/dbs-02.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Database Systems screenshot 3"><img src="assets/fyp/dbs-03.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 3"></button>
-              <button class="evidence-mini" type="button" data-proof-index="3" aria-label="Open Database Systems screenshot 4"><img src="assets/fyp/dbs-04.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 4"></button>
-              <button class="evidence-mini" type="button" data-proof-index="4" aria-label="Open Database Systems screenshot 5"><img src="assets/fyp/dbs-05.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 5"></button>
-              <button class="evidence-mini" type="button" data-proof-index="5" aria-label="Open Database Systems screenshot 6"><img src="assets/fyp/dbs-06.webp" data-proof-image loading="lazy" alt="Database Systems VR module screenshot 6"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Database Systems</h3><p>6 screenshots grouped in one module card</p></div><span class="evidence-count">6 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="dcn" data-module-label="Data Communication and Networks">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Data Communication and Networks proof gallery">
-              <img class="evidence-cover" src="assets/fyp/dcn-01.webp" data-proof-image loading="lazy" alt="Data Communication and Networks VR module screenshot 1">
-              <span class="evidence-code">DCN</span>
-              <span class="evidence-open">Open 3 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Data Communication and Networks screenshot 2"><img src="assets/fyp/dcn-02.webp" data-proof-image loading="lazy" alt="Data Communication and Networks VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Data Communication and Networks screenshot 3"><img src="assets/fyp/dcn-03.webp" data-proof-image loading="lazy" alt="Data Communication and Networks VR module screenshot 3"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Data Communication and Networks</h3><p>3 screenshots grouped in one module card</p></div><span class="evidence-count">3 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="dld" data-module-label="Digital Logic Design">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Digital Logic Design proof gallery">
-              <img class="evidence-cover" src="assets/fyp/dld-01.webp" data-proof-image loading="lazy" alt="Digital Logic Design VR module screenshot 1">
-              <span class="evidence-code">DLD</span>
-              <span class="evidence-open">Open 2 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Digital Logic Design screenshot 2"><img src="assets/fyp/dld-02.webp" data-proof-image loading="lazy" alt="Digital Logic Design VR module screenshot 2"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Digital Logic Design</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="dsa" data-module-label="Data Structures and Algorithms">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Data Structures and Algorithms proof gallery">
-              <img class="evidence-cover" src="assets/fyp/dsa-01.webp" data-proof-image loading="lazy" alt="Data Structures and Algorithms VR module screenshot 1">
-              <span class="evidence-code">DSA</span>
-              <span class="evidence-open">Open 2 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Data Structures and Algorithms screenshot 2"><img src="assets/fyp/dsa-02.webp" data-proof-image loading="lazy" alt="Data Structures and Algorithms VR module screenshot 2"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Data Structures and Algorithms</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="os" data-module-label="Operating System">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Operating System proof gallery">
-              <img class="evidence-cover" src="assets/fyp/os-01.webp" data-proof-image loading="lazy" alt="Operating System VR module screenshot 1">
-              <span class="evidence-code">OS</span>
-              <span class="evidence-open">Open 3 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Operating System screenshot 2"><img src="assets/fyp/os-02.webp" data-proof-image loading="lazy" alt="Operating System VR module screenshot 2"></button>
-              <button class="evidence-mini" type="button" data-proof-index="2" aria-label="Open Operating System screenshot 3"><img src="assets/fyp/os-03.webp" data-proof-image loading="lazy" alt="Operating System VR module screenshot 3"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Operating System</h3><p>3 screenshots grouped in one module card</p></div><span class="evidence-count">3 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="fire" data-module-label="Fire Extinguisher Safety">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Fire Extinguisher Safety proof gallery">
-              <img class="evidence-cover" src="assets/fyp/fire-extinguisher/fire-01.png" data-proof-image loading="lazy" alt="Fire Extinguisher Safety VR module screenshot 1">
-              <span class="evidence-code">FIRE</span>
-              <span class="evidence-open">Open 2 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Fire Extinguisher Safety screenshot 2"><img src="assets/fyp/fire-extinguisher/fire-02.png" data-proof-image loading="lazy" alt="Fire Extinguisher Safety VR module screenshot 2"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Fire Extinguisher Safety</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
-          </article>
-          <article class="evidence-card reveal" data-module="mazar" data-module-label="Mazar-e-Quaid Digital Twin">
-            <button class="evidence-thumb" type="button" data-proof-index="0" aria-label="Open Mazar-e-Quaid Digital Twin proof gallery">
-              <img class="evidence-cover" src="assets/fyp/mazar-e-quaid/mazar-01.png" data-proof-image loading="lazy" alt="Mazar-e-Quaid Digital Twin screenshot 1">
-              <span class="evidence-code">MQD</span>
-              <span class="evidence-open">Open 2 proofs</span>
-            </button>
-            <div class="evidence-mini-row">
-              <button class="evidence-mini" type="button" data-proof-index="1" aria-label="Open Mazar-e-Quaid Digital Twin screenshot 2"><img src="assets/fyp/mazar-e-quaid/mazar-02.png" data-proof-image loading="lazy" alt="Mazar-e-Quaid Digital Twin screenshot 2"></button>
-            </div>
-            <div class="evidence-meta"><div><h3>Mazar-e-Quaid Digital Twin</h3><p>2 screenshots grouped in one module card</p></div><span class="evidence-count">2 proofs</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section video-section" id="videos" aria-labelledby="videos-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">FYP Video Demos</p>
-          <h2 id="videos-title">Module walkthroughs and AI assistant demos on YouTube.</h2>
-        </div>
-        <div class="video-summary reveal">
-          <span><strong>10</strong> linked video demos</span>
-          <span><strong>9</strong> subject modules</span>
-          <span><strong>1</strong> AI avatar demo</span>
-        </div>
-        <div class="video-grid">
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="fv0zxbgd9Ts" data-video-code="AI" data-video-title="Artificial Intelligence" data-video-url="https://youtu.be/fv0zxbgd9Ts" aria-label="Play Artificial Intelligence video demo">
-              <img src="assets/fyp/ai-03.webp" alt="Artificial Intelligence VR module screenshot" loading="lazy">
-              <span class="video-code">AI</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Artificial Intelligence</h3><p>Walkthrough of the Artificial Intelligence learning module inside the VR platform.</p><a class="inline-link" href="https://youtu.be/fv0zxbgd9Ts" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="Ppt5mqVKQus" data-video-code="AP" data-video-title="Applied Physics" data-video-url="https://youtu.be/Ppt5mqVKQus" aria-label="Play Applied Physics video demo">
-              <img src="assets/fyp/ap-03.webp" alt="Applied Physics VR module screenshot" loading="lazy">
-              <span class="video-code">AP</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Applied Physics</h3><p>VR walkthrough for physics concepts, interactions, and spatial learning flow.</p><a class="inline-link" href="https://youtu.be/Ppt5mqVKQus" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="c3FQG-gDJTU" data-video-code="BE" data-video-title="Basic Electronics" data-video-url="https://youtu.be/c3FQG-gDJTU" aria-label="Play Basic Electronics video demo">
-              <img src="assets/fyp/be-02.webp" alt="Basic Electronics VR module screenshot" loading="lazy">
-              <span class="video-code">BE</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Basic Electronics</h3><p>Demo of the electronics environment, lab objects, and guided VR module layout.</p><a class="inline-link" href="https://youtu.be/c3FQG-gDJTU" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="gBxr_ZjLvDE" data-video-code="COAL" data-video-title="Computer Organization and Assembly Language" data-video-url="https://youtu.be/gBxr_ZjLvDE" aria-label="Play Computer Organization and Assembly Language video demo">
-              <img src="assets/fyp/coal-02.webp" alt="Computer Organization and Assembly Language VR module screenshot" loading="lazy">
-              <span class="video-code">COAL</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Computer Organization and Assembly Language</h3><p>VR module demo for COAL topics, visual structure, and interactive learning path.</p><a class="inline-link" href="https://youtu.be/gBxr_ZjLvDE" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="btvhPx6pNEY" data-video-code="DAA" data-video-title="Design and Analysis of Algorithms" data-video-url="https://youtu.be/btvhPx6pNEY" aria-label="Play Design and Analysis of Algorithms video demo">
-              <img src="assets/fyp/daa-02.webp" alt="Design and Analysis of Algorithms VR module screenshot" loading="lazy">
-              <span class="video-code">DAA</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Design and Analysis of Algorithms</h3><p>Algorithm learning demo with VR navigation and structured module content.</p><a class="inline-link" href="https://youtu.be/btvhPx6pNEY" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="QxVq_sVmHbk" data-video-code="DBMS" data-video-title="Database Management System" data-video-url="https://youtu.be/QxVq_sVmHbk" aria-label="Play Database Management System video demo">
-              <img src="assets/fyp/dbs-01.webp" alt="Database Management System VR module screenshot" loading="lazy">
-              <span class="video-code">DBMS</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Database Management System</h3><p>Database module walkthrough showing the VR learning environment and content flow.</p><a class="inline-link" href="https://youtu.be/QxVq_sVmHbk" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="hK88lqn72bc" data-video-code="DLD" data-video-title="Digital Logic Design" data-video-url="https://youtu.be/hK88lqn72bc" aria-label="Play Digital Logic Design video demo">
-              <img src="assets/fyp/dld-01.webp" alt="Digital Logic Design VR module screenshot" loading="lazy">
-              <span class="video-code">DLD</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Digital Logic Design</h3><p>Digital logic module demo with immersive visual layout and interaction points.</p><a class="inline-link" href="https://youtu.be/hK88lqn72bc" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="bViSNzEl70g" data-video-code="OS" data-video-title="Operating System" data-video-url="https://youtu.be/bViSNzEl70g" aria-label="Play Operating System video demo">
-              <img src="assets/fyp/os-02.webp" alt="Operating System VR module screenshot" loading="lazy">
-              <span class="video-code">OS</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Module Demo</span><h3>Operating System</h3><p>Operating System module walkthrough for VR-based topic exploration.</p><a class="inline-link" href="https://youtu.be/bViSNzEl70g" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="YENkOdrg46k" data-video-code="FIRE" data-video-title="Fire Extinguisher Safety" data-video-url="https://youtu.be/YENkOdrg46k" aria-label="Play Fire Extinguisher Safety video demo">
-              <img src="assets/fyp/fire-extinguisher/fire-02.png" alt="Fire Extinguisher Safety VR module screenshot" loading="lazy">
-              <span class="video-code">FIRE</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Safety Module Demo</span><h3>Fire Extinguisher Safety</h3><p>Interactive fire-response scenario demonstrating the extinguisher training module inside the VR platform.</p><a class="inline-link" href="https://youtu.be/YENkOdrg46k" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-          <article class="video-card reveal">
-            <button class="video-shell" type="button" data-video-id="CTyaDWUiSN8" data-video-code="SAGE" data-video-title="AI Assistant Avatar" data-video-url="https://youtu.be/CTyaDWUiSN8" aria-label="Play AI Assistant Avatar video demo">
-              <img src="assets/video-posters/sage-avatar.webp" alt="AI assistant avatar video thumbnail" loading="lazy">
-              <span class="video-code">SAGE</span>
-              <span class="video-play" aria-hidden="true">&#9658;</span>
-              <span class="video-action">Play demo</span>
-            </button>
-            <div class="video-meta"><span>Assistant Demo</span><h3>AI Assistant Avatar</h3><p>Demo of the AI tutor avatar experience built for guided support inside the platform.</p><a class="inline-link" href="https://youtu.be/CTyaDWUiSN8" target="_blank" rel="noreferrer">Watch on YouTube &#8599;</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Experience</p>
-          <h2 id="experience-title">A path through security, support, research, and AR/VR.</h2>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <time>Dec 2024-Jun 2025</time>
-            <div>
-              <h3>Cybersecurity Analyst</h3>
-              <p>Cybarrier Solutions Pvt Ltd</p>
-              <span>Vulnerability monitoring, threat analysis, incident response, and security reports.</span>
-            </div>
-          </article>
-          <article class="timeline-item reveal">
-            <time>Dec 2024-Jun 2025</time>
-            <div>
-              <h3>CPA Marketing Associate (Remote)</h3>
-              <p>Freelance</p>
-              <span>Traffic analytics, performance tracking, and anomaly detection across campaigns.</span>
-            </div>
-          </article>
-          <article class="timeline-item reveal">
-            <time>May 2021-Jun 2022</time>
-            <div>
-              <h3>Customer Service Ambassador</h3>
-              <p>TCS Pakistan</p>
-              <span>Multi-channel customer support, issue routing, and professional client communication.</span>
-            </div>
-          </article>
-          <article class="timeline-item reveal">
-            <time>2022-2026</time>
-            <div>
-              <h3>BS Computer Science</h3>
-              <p>DUET Karachi</p>
-              <span>CGPA 3.65 | Scholarship Awardee | FYP: Immersive VR Educational Platform.</span>
-            </div>
-          </article>
-          <article class="timeline-item open-role reveal">
-            <time>2026 (Open)</time>
-            <div>
-              <h3>Seeking Full-Time Roles</h3>
-              <p>Actively seeking AR/VR &amp; AI/ML positions</p>
-              <span>Available for immersive technology, Python, and applied AI opportunities.</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section achievements-section" id="achievements" aria-labelledby="achievements-title">
-      <div class="section-inner">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Achievements</p>
-          <h2 id="achievements-title">Discipline inside and outside the lab.</h2>
-        </div>
-        <div class="achievement-grid">
-          <article class="achievement-card reveal"><span aria-hidden="true">A+</span><h3>Academic Excellence</h3><p>CGPA 3.65, Scholarship Award, DUET.</p></article>
-          <article class="achievement-card reveal"><span aria-hidden="true">RUN</span><h3>District Marathon Athlete</h3><p>Discipline, endurance, and long-range focus.</p></article>
-          <article class="achievement-card reveal"><span aria-hidden="true">ALL</span><h3>District Cricket All-Rounder</h3><p>Leadership, teamwork, and pressure handling.</p></article>
-          <article class="achievement-card reveal"><span aria-hidden="true">VR</span><h3>AR/VR Specialization</h3><p>Research-grade AR/VR development with Vizard 8.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="section-inner contact-grid">
-        <div class="contact-copy reveal">
-          <p class="section-kicker">Contact</p>
-          <h2 id="contact-title">Let's Build Immersive Experiences</h2>
-          <p>Open to AR/VR, AI/ML, and Python roles. Based in Karachi, Pakistan.</p>
-          <div class="contact-list">
-            <a href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a>
-            <a href="tel:+923062305023">+92-306-2305023</a>
-            <span>Karachi, Pakistan</span>
-          </div>
-          <div class="availability-panel" aria-label="Availability summary">
-            <span>Open to full-time roles</span>
-            <span>AR/VR · AI/ML · Python</span>
-            <span>Karachi or remote</span>
-          </div>
-          <div class="social-row" aria-label="Social links">
-            <a href="https://www.linkedin.com/in/zarrar-abbas-75b85630b" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://github.com/Zarrar110" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="mailto:zarrarabbas73@gmail.com">Email</a>
-            <a href="tel:+923062305023">Phone</a>
-            <button class="copy-email" type="button" data-copy-email="zarrarabbas73@gmail.com">Copy Email</button>
-          </div>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-          <a class="btn btn-primary contact-cv" href="Zarrar_Abbas_CV.pdf" download>Download CV</a>
-        </div>
-        <form class="contact-form reveal" id="contact-form" novalidate>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required minlength="2">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-          <label for="subject">Subject</label>
-          <select id="subject" name="subject" required>
-            <option value="">Select a subject</option>
-            <option value="Job Opportunity">Job Opportunity</option>
-            <option value="Freelance">Freelance</option>
-            <option value="Collaboration">Collaboration</option>
-            <option value="Other">Other</option>
-          </select>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" required minlength="10"></textarea>
-          <button class="btn btn-primary submit-btn" type="submit">Send Message &rarr;</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
+      <p class="contact">Write to me at <a href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a> · +92 306 2305023 · <a href="Zarrar_Abbas_CV.pdf">Download CV</a></p>
     </section>
   </main>
 
-  <div class="proof-lightbox" id="proof-lightbox" hidden aria-hidden="true">
-    <div class="proof-lightbox-backdrop" data-lightbox-close></div>
-    <div class="proof-dialog" role="dialog" aria-modal="true" aria-labelledby="proof-lightbox-title">
-      <button class="proof-close" type="button" data-lightbox-close aria-label="Close evidence preview">&times;</button>
-      <button class="proof-nav proof-prev" type="button" data-lightbox-prev aria-label="Previous screenshot">&#8592;</button>
-      <figure class="proof-stage">
-        <img id="proof-lightbox-image" src="" alt="">
-        <figcaption>
-          <span id="proof-lightbox-module">FYP Evidence</span>
-          <h3 id="proof-lightbox-title">Module Screenshot</h3>
-          <p id="proof-lightbox-count">Screenshot 1 of module gallery</p>
-        </figcaption>
-      </figure>
-      <button class="proof-nav proof-next" type="button" data-lightbox-next aria-label="Next screenshot">&#8594;</button>
-    </div>
-  </div>
+  <footer>© 2026 Zarrar Abbas</footer>
 
-  <div class="video-lightbox" id="video-lightbox" hidden aria-hidden="true">
-    <div class="video-lightbox-backdrop" data-video-close></div>
-    <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="video-lightbox-title">
-      <button class="video-close" type="button" data-video-close aria-label="Close video player">&times;</button>
-      <div class="video-player">
-        <iframe id="video-lightbox-frame" title="" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="video-dialog-meta">
-        <span id="video-lightbox-code">FYP Demo</span>
-        <h3 id="video-lightbox-title">Module Video</h3>
-        <a id="video-lightbox-link" href="#" target="_blank" rel="noreferrer">Open on YouTube &#8599;</a>
-      </div>
-    </div>
-  </div>
+  <dialog id="viewer">
+    <button class="close" type="button" aria-label="Close">×</button>
+    <figure>
+      <img id="viewer-img" alt="">
+      <figcaption><span id="viewer-cap"></span> <span id="viewer-count"></span></figcaption>
+    </figure>
+    <button class="nav prev" type="button" aria-label="Previous">‹</button>
+    <button class="nav next" type="button" aria-label="Next">›</button>
+  </dialog>
 
-  <footer class="footer">
-    <p>Built with passion for immersive tech · © 2026 Zarrar Abbas</p>
-  </footer>
-
-  <a class="back-to-top" href="#top" aria-label="Back to top">&uarr;</a>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/hero3d.js?v=20260721-vr-showcase"></script>
-  <script src="js/main.js?v=20260721-vr-showcase"></script>
+  <script src="js/main.js?v=20261031"></script>
 </body>
 </html>

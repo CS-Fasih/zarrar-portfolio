@@ -1,571 +1,87 @@
-(function () {
-  const phrases = [
-    "AR/VR Developer",
-    "Python Developer",
-    "AI/ML Enthusiast",
-    "Immersive VR Builder"
-  ];
-  const typewriter = document.getElementById("typewriter");
-  const header = document.querySelector(".site-header");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  const backToTop = document.querySelector(".back-to-top");
-  const contactForm = document.getElementById("contact-form");
-  const progressBar = document.querySelector(".scroll-progress span");
-  const navItems = Array.from(document.querySelectorAll(".nav-links a[href^='#']:not(.nav-cta)"));
-  const trackedSections = navItems
-    .map((link) => {
-      const target = document.querySelector(link.getAttribute("href"));
-      return target ? { link, target } : null;
-    })
-    .filter(Boolean);
-  const LOCAL_CONTACT_API = "http://localhost:3001/api/contact";
-  const PRODUCTION_CONTACT_API = "/api/contact";
-  const CONTACT_API = ["localhost", "127.0.0.1"].includes(window.location.hostname)
-    ? LOCAL_CONTACT_API
-    : PRODUCTION_CONTACT_API;
+// Content lives here so adding a screenshot means adding one path.
+// Lab screenshots go in assets/labs/ (e.g. assets/labs/bridgelab-01.webp).
 
-  function startTypewriter() {
-    if (!typewriter) {
-      return;
-    }
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
+const labs = [
+  { name: "RC SiteLab", text: "Reinforced-concrete construction site: formwork, rebar placement and pour sequence.", images: [] },
+  { name: "BridgeLab VR", text: "Bridge types and how load travels through each structure.", images: [] },
+  { name: "Seismic Shake Table", text: "Buildings on a virtual shake table under different earthquake inputs.", images: [] },
+  { name: "Hydraulics & Dam Safety", text: "Dam components, spillway flow and failure scenarios.", images: [] },
+  { name: "Engine Lab VR", text: "Internal-combustion engine assembly and the four-stroke cycle.", images: [] }
+];
 
-    function tick() {
-      const phrase = phrases[phraseIndex];
-      typewriter.textContent = phrase.slice(0, charIndex);
+const f = (n) => `assets/fyp/${n}.webp`;
+const modules = [
+  { code: "COAL", name: "Computer Organization", text: "RISC pipeline, stepped one clock cycle at a time.", images: [f("coal-01"), f("coal-02")], video: "gBxr_ZjLvDE" },
+  { code: "DBS", name: "Database Systems", text: "A SQL query through parser, optimizer and execution.", images: ["dbs-01","dbs-02","dbs-03","dbs-04","dbs-05","dbs-06"].map(f), video: "QxVq_sVmHbk" },
+  { code: "AP", name: "Applied Physics", text: "Projectiles and solenoid field lines you can toggle.", images: ["ap-01","ap-02","ap-03","ap-04","ap-05","ap-06","ap-07","ap-08"].map(f), video: "Ppt5mqVKQus" },
+  { code: "AI", name: "Artificial Intelligence", text: "An XOR neural network with visible weights and signals.", images: ["ai-01","ai-02","ai-03","ai-04"].map(f), video: "fv0zxbgd9Ts" },
+  { code: "BE", name: "Basic Electronics", text: "Ohm's law, breadboard circuits, PN junction bias.", images: ["be-01","be-02","be-03","be-04","be-05","be-06"].map(f), video: "c3FQG-gDJTU" },
+  { code: "DSA", name: "Data Structures", text: "Linked lists, BST traversal, Dijkstra's shortest path.", images: [f("dsa-01"), f("dsa-02")] },
+  { code: "DAA", name: "Algorithms", text: "Frequency-count analysis of algorithms, step by step.", images: ["daa-01","daa-02","daa-03","daa-04"].map(f), video: "btvhPx6pNEY" },
+  { code: "OS", name: "Operating Systems", text: "Round Robin and SJF scheduling as moving queues.", images: [f("os-01"), f("os-02"), f("os-03")], video: "bViSNzEl70g" },
+  { code: "DCN", name: "Networking", text: "Caesar cipher encryption between client and server.", images: [f("dcn-01"), f("dcn-02"), f("dcn-03")] },
+  { code: "DLD", name: "Digital Logic", text: "Logic gates and circuits built interactively.", images: [f("dld-01"), f("dld-02")], video: "hK88lqn72bc" }
+];
 
-      if (!deleting && charIndex < phrase.length) {
-        charIndex += 1;
-        window.setTimeout(tick, 70);
-        return;
-      }
+const galleries = {
+  mazar: { name: "Mazar-e-Quaid digital twin", images: ["assets/fyp/mazar-e-quaid/mazar-01.png", "assets/fyp/mazar-e-quaid/mazar-02.png"] },
+  fire: { name: "Fire extinguisher training", images: ["assets/fyp/fire-extinguisher/fire-01.png", "assets/fyp/fire-extinguisher/fire-02.png"] }
+};
 
-      if (!deleting && charIndex === phrase.length) {
-        deleting = true;
-        window.setTimeout(tick, 1600);
-        return;
-      }
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
-      if (deleting && charIndex > 0) {
-        charIndex -= 1;
-        window.setTimeout(tick, 40);
-        return;
-      }
+function card(item, key) {
+  const has = item.images.length > 0;
+  const shot = has
+    ? `<button class="shot" type="button" data-key="${key}" aria-label="Open ${esc(item.name)} screenshots">
+         <img src="${item.images[0]}" alt="${esc(item.name)} VR module" loading="lazy">
+         ${item.images.length > 1 ? `<span class="n">${item.images.length}</span>` : ""}
+       </button>`
+    : "";
+  const video = item.video
+    ? ` <a href="https://youtu.be/${item.video}" target="_blank" rel="noreferrer">Video</a>`
+    : "";
+  return `<article class="card${has ? "" : " text-only"}">${shot}
+    <h3>${esc(item.name)}</h3><p>${esc(item.text)}${video}</p></article>`;
+}
 
-      deleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      window.setTimeout(tick, 220);
-    }
+modules.forEach((m, i) => (galleries["m" + i] = m));
+labs.forEach((l, i) => (galleries["l" + i] = l));
 
-    tick();
-  }
+document.getElementById("modules").innerHTML = modules.map((m, i) => card(m, "m" + i)).join("");
+document.getElementById("labs").innerHTML = labs.map((l, i) => card(l, "l" + i)).join("");
 
-  function setupReveal() {
-    const revealItems = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      revealItems.forEach((item) => item.classList.add("visible"));
-      return;
-    }
+// Viewer
+const dlg = document.getElementById("viewer");
+const img = document.getElementById("viewer-img");
+const cap = document.getElementById("viewer-cap");
+const count = document.getElementById("viewer-count");
+let cur = null, idx = 0;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.16, rootMargin: "0px 0px -60px 0px" });
+function show() {
+  img.src = cur.images[idx];
+  img.alt = `${cur.name} screenshot ${idx + 1}`;
+  cap.textContent = cur.name;
+  count.textContent = cur.images.length > 1 ? `${idx + 1} / ${cur.images.length}` : "";
+  dlg.classList.toggle("single", cur.images.length < 2);
+}
+function open(key) {
+  cur = galleries[key]; idx = 0;
+  if (!cur || !cur.images.length) return;
+  show(); dlg.showModal();
+}
+function step(d) { idx = (idx + d + cur.images.length) % cur.images.length; show(); }
 
-    revealItems.forEach((item) => observer.observe(item));
-  }
-
-  function animateCount(stat) {
-    const value = stat.querySelector(".count-value");
-    if (!value || stat.dataset.counted === "true") {
-      return;
-    }
-
-    stat.dataset.counted = "true";
-    const target = Number.parseFloat(stat.dataset.target || "0");
-    const decimals = Number.parseInt(stat.dataset.decimals || "0", 10);
-    const duration = 1400;
-    const start = performance.now();
-
-    function frame(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = target * eased;
-      value.textContent = current.toFixed(decimals);
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        value.textContent = target.toFixed(decimals);
-      }
-    }
-
-    requestAnimationFrame(frame);
-  }
-
-  function setupCounters() {
-    const stats = document.querySelectorAll(".stat");
-    if (!("IntersectionObserver" in window)) {
-      stats.forEach(animateCount);
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.45 });
-
-    stats.forEach((stat) => observer.observe(stat));
-  }
-
-  function updateScrollState() {
-    const isScrolled = window.scrollY > 50;
-    header && header.classList.toggle("scrolled", isScrolled);
-    backToTop && backToTop.classList.toggle("visible", window.scrollY > 640);
-    updateScrollProgress();
-    updateActiveNav();
-  }
-
-  function updateScrollProgress() {
-    if (!progressBar) {
-      return;
-    }
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-    progressBar.style.width = `${Math.min(100, Math.max(0, progress)).toFixed(2)}%`;
-  }
-
-  function updateActiveNav() {
-    if (!trackedSections.length) {
-      return;
-    }
-    const position = window.scrollY + 180;
-    let activeItem = trackedSections[0];
-    trackedSections.forEach((item) => {
-      if (item.target.offsetTop <= position) {
-        activeItem = item;
-      }
-    });
-    trackedSections.forEach((item) => {
-      const active = item === activeItem;
-      item.link.classList.toggle("active", active);
-      if (active) {
-        item.link.setAttribute("aria-current", "page");
-      } else {
-        item.link.removeAttribute("aria-current");
-      }
-    });
-  }
-
-  function setupMenu() {
-    if (!menuToggle || !navLinks) {
-      return;
-    }
-
-    menuToggle.addEventListener("click", () => {
-      const open = !navLinks.classList.contains("open");
-      navLinks.classList.toggle("open", open);
-      menuToggle.classList.toggle("open", open);
-      menuToggle.setAttribute("aria-expanded", String(open));
-      document.body.classList.toggle("menu-open", open);
-    });
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("menu-open");
-      });
-    });
-  }
-
-  function setupBackToTop() {
-    if (!backToTop) {
-      return;
-    }
-
-    backToTop.addEventListener("click", (event) => {
-      event.preventDefault();
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    });
-  }
-
-  function setFormStatus(message, type) {
-    const status = contactForm && contactForm.querySelector(".form-status");
-    if (!status) {
-      return;
-    }
-    status.textContent = message;
-    status.className = "form-status";
-    if (type) {
-      status.classList.add(type);
-    }
-  }
-
-  function validateContact(data) {
-    if (!data.name || data.name.trim().length < 2) {
-      return "Please enter your name.";
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      return "Please enter a valid email address.";
-    }
-    if (!data.subject) {
-      return "Please choose a subject.";
-    }
-    if (!data.message || data.message.trim().length < 10) {
-      return "Please write a message of at least 10 characters.";
-    }
-    return "";
-  }
-
-  function setupContactForm() {
-    if (!contactForm) {
-      return;
-    }
-
-    contactForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const submitButton = contactForm.querySelector("button[type='submit']");
-      const data = {
-        name: contactForm.name.value.trim(),
-        email: contactForm.email.value.trim(),
-        subject: contactForm.subject.value,
-        message: contactForm.message.value.trim()
-      };
-      const error = validateContact(data);
-      if (error) {
-        setFormStatus(error, "error");
-        return;
-      }
-
-      setFormStatus("Sending your message...", "");
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-      }
-
-      try {
-        const response = await fetch(CONTACT_API, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          throw new Error(result.error || "Message could not be sent.");
-        }
-        contactForm.reset();
-        setFormStatus("Message sent. Zarrar will get back to you soon.", "success");
-      } catch (fetchError) {
-        setFormStatus(fetchError.message || "Contact service is unavailable right now.", "error");
-      } finally {
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = "Send Message \u2192";
-        }
-      }
-    });
-  }
-
-  function setupCopyEmail() {
-    const copyButton = document.querySelector("[data-copy-email]");
-    const status = document.querySelector(".copy-status");
-    if (!copyButton) {
-      return;
-    }
-
-    function setCopyStatus(message) {
-      if (status) {
-        status.textContent = message;
-      }
-    }
-
-    async function copyText(text) {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        return;
-      }
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
-    }
-
-    copyButton.addEventListener("click", async () => {
-      const email = copyButton.dataset.copyEmail || "";
-      try {
-        await copyText(email);
-        setCopyStatus("Email copied to clipboard.");
-      } catch (error) {
-        setCopyStatus("Email is zarrarabbas73@gmail.com.");
-      }
-    });
-  }
-
-  function setupEvidenceGallery() {
-    const gallery = document.getElementById("evidence");
-    const lightbox = document.getElementById("proof-lightbox");
-    if (!gallery || !lightbox) {
-      return;
-    }
-
-    const filters = Array.from(gallery.querySelectorAll(".evidence-filter"));
-    const cards = Array.from(gallery.querySelectorAll(".evidence-card"));
-    const image = document.getElementById("proof-lightbox-image");
-    const title = document.getElementById("proof-lightbox-title");
-    const module = document.getElementById("proof-lightbox-module");
-    const count = document.getElementById("proof-lightbox-count");
-    const closeButtons = lightbox.querySelectorAll("[data-lightbox-close]");
-    const previousButton = lightbox.querySelector("[data-lightbox-prev]");
-    const nextButton = lightbox.querySelector("[data-lightbox-next]");
-    let visibleCards = cards.slice();
-    let currentCard = null;
-    let currentGallery = [];
-    let currentIndex = 0;
-    let lastFocused = null;
-
-    function syncVisibleCards() {
-      visibleCards = cards.filter((card) => !card.classList.contains("is-hidden"));
-    }
-
-    function cardImages(card) {
-      const moduleName = card.dataset.moduleLabel || "FYP Evidence";
-      const moduleCode = (card.dataset.module || "").toUpperCase();
-      return Array.from(card.querySelectorAll("[data-proof-image]")).map((cardImage, index) => ({
-        src: cardImage.currentSrc || cardImage.src,
-        alt: cardImage.alt || `${moduleName} screenshot ${index + 1}`,
-        moduleName,
-        moduleCode
-      }));
-    }
-
-    function showLightbox(card, index) {
-      currentCard = card;
-      currentGallery = cardImages(card);
-      if (!currentGallery.length) {
-        return;
-      }
-      currentIndex = (index + currentGallery.length) % currentGallery.length;
-      const data = currentGallery[currentIndex];
-      image.src = data.src;
-      image.alt = data.alt;
-      module.textContent = data.moduleCode ? `${data.moduleCode} · ${data.moduleName}` : data.moduleName;
-      title.textContent = data.moduleName;
-      count.textContent = `Screenshot ${currentIndex + 1} of ${currentGallery.length} · ${visibleCards.length} module${visibleCards.length === 1 ? "" : "s"} shown`;
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-      const closeButton = lightbox.querySelector(".proof-close");
-      if (closeButton) {
-        closeButton.focus();
-      }
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("lightbox-open");
-      image.removeAttribute("src");
-      if (lastFocused) {
-        lastFocused.focus();
-      }
-    }
-
-    function moveLightbox(delta) {
-      if (currentCard) {
-        showLightbox(currentCard, currentIndex + delta);
-      }
-    }
-
-    filters.forEach((filter) => {
-      filter.addEventListener("click", () => {
-        const selected = filter.dataset.filter || "all";
-        filters.forEach((button) => {
-          const active = button === filter;
-          button.classList.toggle("active", active);
-          button.setAttribute("aria-pressed", String(active));
-        });
-        cards.forEach((card) => {
-          const hidden = selected !== "all" && card.dataset.module !== selected;
-          const triggers = card.querySelectorAll(".evidence-thumb, .evidence-mini");
-          card.classList.toggle("is-hidden", hidden);
-          card.setAttribute("aria-hidden", String(hidden));
-          triggers.forEach((trigger) => {
-            trigger.tabIndex = hidden ? -1 : 0;
-          });
-        });
-        syncVisibleCards();
-      });
-    });
-
-    cards.forEach((card) => {
-      const triggers = card.querySelectorAll(".evidence-thumb, .evidence-mini");
-      triggers.forEach((trigger) => {
-        trigger.addEventListener("click", () => {
-          lastFocused = trigger;
-          syncVisibleCards();
-          showLightbox(card, Number(trigger.dataset.proofIndex || 0));
-        });
-      });
-    });
-
-    closeButtons.forEach((button) => button.addEventListener("click", closeLightbox));
-    previousButton && previousButton.addEventListener("click", () => moveLightbox(-1));
-    nextButton && nextButton.addEventListener("click", () => moveLightbox(1));
-
-    document.addEventListener("keydown", (event) => {
-      if (lightbox.hidden) {
-        return;
-      }
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-      if (event.key === "ArrowLeft") {
-        moveLightbox(-1);
-      }
-      if (event.key === "ArrowRight") {
-        moveLightbox(1);
-      }
-    });
-  }
-
-  function setupVideoModal() {
-    const modal = document.getElementById("video-lightbox");
-    const frame = document.getElementById("video-lightbox-frame");
-    const title = document.getElementById("video-lightbox-title");
-    const code = document.getElementById("video-lightbox-code");
-    const link = document.getElementById("video-lightbox-link");
-    const triggers = Array.from(document.querySelectorAll("[data-video-id]"));
-    if (!modal || !frame || !triggers.length) {
-      return;
-    }
-
-    const closeButtons = modal.querySelectorAll("[data-video-close]");
-    let lastFocused = null;
-
-    function closeVideo() {
-      modal.hidden = true;
-      modal.setAttribute("aria-hidden", "true");
-      frame.removeAttribute("src");
-      frame.title = "";
-      document.body.classList.remove("lightbox-open");
-      if (lastFocused) {
-        lastFocused.focus();
-      }
-    }
-
-    function openVideo(trigger) {
-      const videoId = trigger.dataset.videoId || "";
-      const videoTitle = trigger.dataset.videoTitle || "FYP Video Demo";
-      const videoCode = trigger.dataset.videoCode || "FYP";
-      const videoUrl = trigger.dataset.videoUrl || `https://youtu.be/${videoId}`;
-      if (!videoId) {
-        return;
-      }
-
-      lastFocused = trigger;
-      if (!/^https?:$/.test(window.location.protocol)) {
-        window.open(videoUrl, "_blank", "noopener,noreferrer");
-        return;
-      }
-
-      const origin = window.location.origin ? `&origin=${encodeURIComponent(window.location.origin)}` : "";
-      frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0${origin}`;
-      frame.title = `${videoTitle} video demo`;
-      if (title) {
-        title.textContent = videoTitle;
-      }
-      if (code) {
-        code.textContent = `${videoCode} · YouTube demo`;
-      }
-      if (link) {
-        link.href = videoUrl;
-      }
-      modal.hidden = false;
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-      const closeButton = modal.querySelector(".video-close");
-      if (closeButton) {
-        closeButton.focus();
-      }
-    }
-
-    triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => openVideo(trigger));
-    });
-    closeButtons.forEach((button) => button.addEventListener("click", closeVideo));
-    document.addEventListener("keydown", (event) => {
-      if (modal.hidden) {
-        return;
-      }
-      if (event.key === "Escape") {
-        closeVideo();
-      }
-    });
-  }
-
-  function setupHolographicGlow() {
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!canHover || reducedMotion) {
-      return;
-    }
-
-    const cards = document.querySelectorAll([
-      ".stat-card",
-      ".focus-card",
-      ".skill-category",
-      ".project-card",
-      ".evidence-card",
-      ".video-card",
-      ".achievement-card"
-    ].join(", "));
-
-    cards.forEach((card) => {
-      card.addEventListener("pointermove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        card.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
-        card.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
-      });
-
-      card.addEventListener("pointerleave", () => {
-        card.style.setProperty("--mx", "50%");
-        card.style.setProperty("--my", "50%");
-      });
-    });
-  }
-
-  startTypewriter();
-  setupReveal();
-  setupCounters();
-  setupMenu();
-  setupBackToTop();
-  setupContactForm();
-  setupCopyEmail();
-  setupEvidenceGallery();
-  setupVideoModal();
-  setupHolographicGlow();
-  updateScrollState();
-  window.addEventListener("scroll", updateScrollState, { passive: true });
-  window.addEventListener("resize", updateScrollState);
-  window.addEventListener("hashchange", () => window.setTimeout(updateScrollState, 180));
-  window.addEventListener("load", () => window.setTimeout(updateScrollState, 180));
-})();
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-key],[data-gallery]");
+  if (t) open(t.dataset.key || t.dataset.gallery);
+});
+dlg.querySelector(".close").onclick = () => dlg.close();
+dlg.querySelector(".prev").onclick = () => step(-1);
+dlg.querySelector(".next").onclick = () => step(1);
+dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+document.addEventListener("keydown", (e) => {
+  if (!dlg.open) return;
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
+});
