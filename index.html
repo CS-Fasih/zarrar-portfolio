@@ -4,77 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zarrar Abbas — XR Engineer</title>
-  <meta name="description" content="Zarrar Abbas builds immersive VR labs for engineering and computer science education with Vizard 8 and SightLab VR Pro.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161a'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%23fff'%3EZA%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Zarrar Abbas, XR engineer from Pakistan. Immersive VR simulations in Vizard 8 and SightLab VR Pro.">
+  <meta name="theme-color" content="#05070b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070b'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' text-anchor='middle' fill='%2347e6ff'%3EZA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261031">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20261031b">
 </head>
 <body>
   <header class="top">
-    <a class="mark" href="#">Zarrar Abbas</a>
+    <a class="mark" href="#"><span class="dot"></span>ZARRAR ABBAS</a>
     <nav>
-      <a href="#work">Work</a>
+      <a href="#work">Labs</a>
+      <a href="#models">3D Models</a>
       <a href="#fyp">FYP</a>
       <a href="#about">About</a>
-      <a href="Zarrar_Abbas_CV.pdf">CV</a>
+      <a class="cv-link" href="Zarrar_Abbas_CV.pdf">CV</a>
     </nav>
   </header>
 
-  <main>
-    <section class="intro">
-      <h1>I build VR labs that let students <em>see</em> how engineering and computing work.</h1>
-      <p class="lede">XR Engineer in Karachi. I develop immersive simulations in Vizard&nbsp;8 and SightLab&nbsp;VR&nbsp;Pro, with eye tracking to measure how students learn. Looking for a funded MS / research assistant position in immersive learning.</p>
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-slides" id="hero-slides" aria-hidden="true"></div>
+    <canvas id="grid" aria-hidden="true"></canvas>
+    <div class="hud" aria-hidden="true">
+      <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <span class="hud-tl">REC ● LIVE SCENE</span>
+      <span class="hud-tr" id="hud-lab">RC SITELAB</span>
+      <span class="hud-bl">VIZARD 8 · OPENXR · META QUEST PRO</span>
+      <span class="hud-br" id="hud-fps">90 FPS</span>
+    </div>
+    <div class="hero-text">
+      <p class="eyebrow">XR ENGINEER · PAKISTAN</p>
+      <h1>Zarrar Abbas</h1>
+      <p class="tag">I build virtual worlds where engineering and computing can be <em>seen</em>, <em>touched</em> and <em>tested</em>.</p>
       <p class="links">
-        <a href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a>
-        <a href="https://github.com/Zarrar110" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/zarrar-abbas-75b85630b" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="#work">Enter the labs</a>
+        <a class="btn ghost" href="Zarrar_Abbas_CV.pdf">Download CV</a>
       </p>
-      <figure class="hero-shot">
-        <img src="assets/fyp/ap-05.webp" alt="VR physics module: projectile launched at 45 degrees with live velocity, height and range readouts" width="1277" height="856">
-        <figcaption>Projectile motion module — velocity components, peak height and range update live as the student changes the launch.</figcaption>
-      </figure>
-    </section>
+    </div>
+    <a class="scroll" href="#work" aria-label="Scroll to labs"><span></span></a>
+  </section>
 
+  <section class="stats" aria-label="At a glance">
+    <div><b>6</b><span>VR labs</span></div>
+    <div><b>150+</b><span>3D models on Fab</span></div>
+    <div><b>2nd</b><span>DUET FICS exhibition</span></div>
+    <div><b>3.65</b><span>CGPA, BS CS</span></div>
+  </section>
+
+  <main>
     <section id="work" class="block">
-      <h2>Engineering VR labs <span>2026 · Vizard 8, Python, Blender</span></h2>
-      <p class="sub">Built at AIDL, the WorldViz distributor in Pakistan, for university engineering departments.</p>
+      <header class="head">
+        <p class="kicker">01 / VR LABS</p>
+        <h2>Engineering labs I built</h2>
+        <p class="sub">Real-time simulations in Vizard 8. Every crack, wave and vibration is driven by real equations, not animation.</p>
+      </header>
       <div class="labs" id="labs"></div>
     </section>
 
+    <section id="models" class="block">
+      <header class="head">
+        <p class="kicker">02 / 3D MODELS</p>
+        <h2>Models I design and sell</h2>
+        <p class="sub">150+ game-ready models I built in Blender, from lab equipment to Pakistani truck art, with PBR materials, LODs and working animations. Published on Fab, CGTrader and Sketchfab.</p>
+      </header>
+      <div class="models" id="model-grid"></div>
+      <p class="links store-links">
+        <a class="btn ghost" href="https://sketchfab.com/zarrarabbas73" target="_blank" rel="noreferrer">View in 3D on Sketchfab ↗</a>
+      </p>
+    </section>
+
     <section id="fyp" class="block">
-      <h2>A&amp;VR Interactive Learning System <span>Final Year Project · 2026</span></h2>
+      <header class="head">
+        <p class="kicker">03 / FINAL YEAR PROJECT</p>
+        <h2>A&amp;VR Interactive Learning System</h2>
+      </header>
       <div class="fyp-head">
-        <p>Twelve VR modules that turn abstract CS topics into rooms you can walk through: a RISC pipeline you step cycle by cycle, a SQL query moving through the optimizer, packets encrypted in front of you. SightLab logs gaze fixations, dwell time and controller paths in every module for learning analysis.</p>
+        <p>Twelve VR modules that turn abstract computer science into rooms you can walk through: a RISC pipeline stepped one clock cycle at a time, a SQL query moving through the optimizer, packets encrypted in front of you. Eye tracking records where each student looks, for how long, and how they move.</p>
         <dl class="facts">
-          <div><dt>Modules</dt><dd>12</dd></div>
-          <div><dt>Stack</dt><dd>Vizard 8, SightLab, Meta Quest Pro</dd></div>
-          <div><dt>Recognition</dt><dd>2nd place, DUET FICS exhibition; IEEEP Students Seminar</dd></div>
-          <div><dt>Supervisor</dt><dd>Dr. Syed Ali Asgher</dd></div>
+          <div><dt>MODULES</dt><dd>12</dd></div>
+          <div><dt>STACK</dt><dd>Vizard 8 · SightLab · Quest Pro</dd></div>
+          <div><dt>AWARD</dt><dd>2nd place, DUET FICS · IEEEP Students Seminar</dd></div>
         </dl>
       </div>
       <div class="grid" id="modules"></div>
     </section>
 
     <section class="block">
-      <h2>Other work</h2>
+      <header class="head">
+        <p class="kicker">04 / MORE WORK</p>
+        <h2>Other builds</h2>
+      </header>
       <ul class="other">
         <li>
           <a href="https://github.com/Zarrar110/vizard-mcp" target="_blank" rel="noreferrer">vizard-mcp</a>
-          <span>MCP server that lets AI assistants build and edit Vizard 8 scenes.</span>
+          <span>An MCP server I wrote so AI assistants can build and edit Vizard 8 scenes.</span>
         </li>
         <li>
           <button type="button" data-gallery="mazar">Mazar-e-Quaid digital twin</button>
-          <span>3D reconstruction of a Karachi landmark for virtual heritage tours.</span>
+          <span>3D reconstruction of a national landmark of Pakistan for virtual heritage tours.</span>
         </li>
         <li>
           <button type="button" data-gallery="fire">Fire extinguisher training</button>
-          <span>VR safety scenario: identify the fire class, pick and use the right extinguisher. <a href="https://youtu.be/YENkOdrg46k" target="_blank" rel="noreferrer">Video</a></span>
+          <span>VR safety scenario: identify the fire class, pick and use the right extinguisher. <a href="https://youtu.be/YENkOdrg46k" target="_blank" rel="noreferrer">Video ↗</a></span>
         </li>
         <li>
           <a href="https://youtu.be/CTyaDWUiSN8" target="_blank" rel="noreferrer">Sage, AI tutor avatar</a>
-          <span>Voice-activated Gemini tutor with speech and lip-sync inside the VR modules.</span>
+          <span>Voice-activated tutor with speech and lip-sync inside my VR modules.</span>
         </li>
         <li>
           <span class="name">Smart attendance</span>
@@ -84,21 +121,32 @@
     </section>
 
     <section id="about" class="block about">
-      <h2>About</h2>
+      <header class="head">
+        <p class="kicker">05 / ABOUT</p>
+        <h2>About me</h2>
+      </header>
       <div class="about-cols">
-        <p>BS Computer Science, Dawood University of Engineering &amp; Technology, Karachi (CGPA 3.65, merit scholarship). I now work as an XR engineer at AIDL, building Vizard content and supporting university VR installations. I'm interested in how immersive simulation and eye tracking can measure and improve learning in engineering and safety training.</p>
+        <p>I'm an XR engineer from Pakistan. I design and build immersive simulations in Vizard&nbsp;8 and SightLab&nbsp;VR&nbsp;Pro, from the 3D models in Blender to the physics behind them, publish my own 3D models on Fab and CGTrader, and I use eye tracking to understand how people learn inside virtual worlds. I studied Computer Science at Dawood University of Engineering &amp; Technology on a merit scholarship.</p>
         <ol class="cv">
-          <li><span>2026 —</span> XR Engineer, AIDL (WorldViz Pakistan)</li>
+          <li><span>2026 —</span> XR Engineer, AIDL</li>
           <li><span>2024–25</span> Cybersecurity Analyst, Cybarrier Solutions</li>
           <li><span>2023–24</span> IT Intern, Pakistan Aeronautical Complex</li>
           <li><span>2022–26</span> BS Computer Science, DUET</li>
         </ol>
       </div>
-      <p class="contact">Write to me at <a href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a> · +92 306 2305023 · <a href="Zarrar_Abbas_CV.pdf">Download CV</a></p>
+      <div class="contact">
+        <a class="big" href="mailto:zarrarabbas73@gmail.com">zarrarabbas73@gmail.com</a>
+        <p class="links">
+          <a href="tel:+923062305023">+92 306 2305023</a>
+          <a href="https://github.com/Zarrar110" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/zarrar-abbas-75b85630b" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="Zarrar_Abbas_CV.pdf">CV ↓</a>
+        </p>
+      </div>
     </section>
   </main>
 
-  <footer>© 2026 Zarrar Abbas</footer>
+  <footer>© 2026 Zarrar Abbas · Pakistan</footer>
 
   <dialog id="viewer">
     <button class="close" type="button" aria-label="Close">×</button>
@@ -110,6 +158,6 @@
     <button class="nav next" type="button" aria-label="Next">›</button>
   </dialog>
 
-  <script src="js/main.js?v=20261031"></script>
+  <script src="js/main.js?v=20261031b"></script>
 </body>
 </html>

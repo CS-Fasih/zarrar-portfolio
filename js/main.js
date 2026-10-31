@@ -11,6 +11,23 @@ const labs = [
   { name: "SuperCar Demo", text: "Real-time vehicle visualisation and interaction in Vizard.", images: lab("supercar", 2) }
 ];
 
+const models = [
+  ["truck-art-transport-truck", "Truck-Art Transport Truck"],
+  ["traditional-auto-rickshaw", "Traditional Auto Rickshaw"],
+  ["cnc-milling-machine-5-axis", "CNC Milling Machine, 5-Axis"],
+  ["complete-dental-operatory", "Dental Operatory Unit"],
+  ["islamic-geometric-minaret-dome", "Minaret and Dome Kit"],
+  ["counterbalance-diesel-forklift", "Diesel Forklift"],
+  ["trinocular-camera-microscope", "Trinocular Microscope"],
+  ["samovar", "Brass Tea Samovar"],
+  ["inspection-hexacopter", "Inspection Hexacopter"],
+  ["hospital-anesthesia-machine", "Anesthesia Machine"],
+  ["electric-site-concrete-mixer", "Site Concrete Mixer"],
+  ["air-fryer", "Smart Air Fryer"]
+];
+document.getElementById("model-grid").innerHTML = models.map(([s, n]) =>
+  `<figure class="model reveal"><img src="assets/models/${s}.webp" alt="${n}, 3D model by Zarrar Abbas" loading="lazy" width="1200" height="675"><figcaption>${n}</figcaption></figure>`).join("");
+
 const f = (n) => `assets/fyp/${n}.webp`;
 const modules = [
   { code: "COAL", name: "Computer Organization", text: "RISC pipeline, stepped one clock cycle at a time.", images: [f("coal-01"), f("coal-02")], video: "gBxr_ZjLvDE" },
@@ -32,10 +49,11 @@ const galleries = {
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
-function card(item, key) {
+function card(item, key, tag) {
   const has = item.images.length > 0;
   const shot = has
     ? `<button class="shot" type="button" data-key="${key}" aria-label="Open ${esc(item.name)} screenshots">
+         ${tag ? `<span class="tagline">${tag}</span>` : ""}
          <img src="${item.images[0]}" alt="${esc(item.name)} VR module" loading="lazy">
          ${item.images.length > 1 ? `<span class="n">${item.images.length}</span>` : ""}
        </button>`
@@ -43,15 +61,15 @@ function card(item, key) {
   const video = item.video
     ? ` <a href="https://youtu.be/${item.video}" target="_blank" rel="noreferrer">Video</a>`
     : "";
-  return `<article class="card${has ? "" : " text-only"}">${shot}
+  return `<article class="card reveal${has ? "" : " text-only"}">${shot}
     <h3>${esc(item.name)}</h3><p>${esc(item.text)}${video}</p></article>`;
 }
 
 modules.forEach((m, i) => (galleries["m" + i] = m));
 labs.forEach((l, i) => (galleries["l" + i] = l));
 
-document.getElementById("modules").innerHTML = modules.map((m, i) => card(m, "m" + i)).join("");
-document.getElementById("labs").innerHTML = labs.map((l, i) => card(l, "l" + i)).join("");
+document.getElementById("modules").innerHTML = modules.map((m, i) => card(m, "m" + i, m.code)).join("");
+document.getElementById("labs").innerHTML = labs.map((l, i) => card(l, "l" + i, "LAB " + String(i + 1).padStart(2, "0"))).join("");
 
 // Viewer
 const dlg = document.getElementById("viewer");
@@ -86,4 +104,77 @@ document.addEventListener("keydown", (e) => {
   if (!dlg.open) return;
   if (e.key === "ArrowRight") step(1);
   if (e.key === "ArrowLeft") step(-1);
+});
+
+// ---- Hero: lab screenshots cross-fading behind a VR-style grid floor
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const slides = document.getElementById("hero-slides");
+const hudLab = document.getElementById("hud-lab");
+const heroShots = labs.map((l) => [l.images[0], l.name]);
+heroShots.forEach(([src, name], i) => {
+  const im = new Image();
+  im.src = src; im.alt = ""; im.decoding = "async";
+  if (i === 0) im.className = "on";
+  slides.appendChild(im);
+});
+let hs = 0;
+if (!still) setInterval(() => {
+  const ims = slides.children;
+  ims[hs].className = "";
+  hs = (hs + 1) % ims.length;
+  ims[hs].className = "on";
+  hudLab.textContent = heroShots[hs][1].toUpperCase();
+}, 5200);
+
+const cv = document.getElementById("grid");
+const ctx = cv.getContext("2d");
+let W = 0, H = 0, mx = 0, my = 0, t0 = performance.now();
+function size() {
+  const r = devicePixelRatio || 1;
+  W = cv.clientWidth; H = cv.clientHeight;
+  cv.width = W * r; cv.height = H * r; ctx.setTransform(r, 0, 0, r, 0, 0);
+}
+addEventListener("resize", size); size();
+addEventListener("pointermove", (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; });
+const fps = document.getElementById("hud-fps");
+let frames = 0, last = performance.now();
+function draw(now) {
+  const t = (now - t0) / 1000;
+  ctx.clearRect(0, 0, W, H);
+  const hz = H * (0.62 + my * 0.03);            // horizon
+  const cx = W / 2 + mx * W * 0.06;             // vanishing point follows the pointer
+  const grad = ctx.createLinearGradient(0, hz, 0, H);
+  grad.addColorStop(0, "rgba(71,230,255,0)");
+  grad.addColorStop(1, "rgba(71,230,255,0.38)");
+  ctx.strokeStyle = grad; ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let i = -24; i <= 24; i++) {             // lines to the vanishing point
+    ctx.moveTo(cx + i * 6, hz); ctx.lineTo(cx + i * W * 0.11, H);
+  }
+  const off = (t * 0.35) % 1;                   // the floor glides towards the viewer
+  for (let k = 0; k < 18; k++) {
+    const z = Math.pow((k + off) / 18, 2.4);
+    const y = hz + (H - hz) * z;
+    ctx.moveTo(0, y); ctx.lineTo(W, y);
+  }
+  ctx.stroke();
+  // tracking reticle
+  const rx = W * (0.5 + mx * 0.5), ry = H * (0.5 + my * 0.5);
+  ctx.strokeStyle = "rgba(71,230,255,0.55)";
+  ctx.beginPath(); ctx.arc(rx, ry, 14, 0, Math.PI * 2);
+  ctx.moveTo(rx - 24, ry); ctx.lineTo(rx - 18, ry); ctx.moveTo(rx + 18, ry); ctx.lineTo(rx + 24, ry);
+  ctx.moveTo(rx, ry - 24); ctx.lineTo(rx, ry - 18); ctx.moveTo(rx, ry + 18); ctx.lineTo(rx, ry + 24);
+  ctx.stroke();
+  frames++;
+  if (now - last > 1000) { fps.textContent = Math.round(frames * 1000 / (now - last)) + " FPS"; frames = 0; last = now; }
+  if (!still) requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// ---- Reveal cards as they scroll in
+const io = new IntersectionObserver((es) => es.forEach((e) => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".reveal, .head, .fyp-head, .other li, .about-cols").forEach((el) => {
+  el.classList.add("reveal"); io.observe(el);
 });
