@@ -171,10 +171,18 @@ function draw(now) {
 }
 requestAnimationFrame(draw);
 
-// ---- Reveal cards as they scroll in
-const io = new IntersectionObserver((es) => es.forEach((e) => {
-  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-}), { rootMargin: "0px 0px -8% 0px" });
-document.querySelectorAll(".reveal, .head, .fyp-head, .other li, .about-cols").forEach((el) => {
-  el.classList.add("reveal"); io.observe(el);
-});
+// ---- Reveal blocks as they scroll in (an enhancement only: nothing stays hidden)
+if (!still && "IntersectionObserver" in window) {
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal, .head, .fyp-head, .other li, .about-cols").forEach((el) => {
+    el.classList.add("reveal");
+    if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("below"); io.observe(el); }
+  });
+  document.documentElement.classList.add("anim");
+  // failsafe: whatever has not appeared after a few seconds (slow device, full-page capture, print) is shown
+  const showAll = () => document.querySelectorAll(".reveal.below").forEach((el) => el.classList.add("in"));
+  setTimeout(showAll, 3500);
+  addEventListener("beforeprint", showAll);
+}
