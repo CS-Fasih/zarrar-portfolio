@@ -143,6 +143,7 @@ h2 { font: 600 clamp(30px, 4.2vw, 48px)/1.08 var(--display); letter-spacing: -0.
 .labs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .labs .card:first-child { grid-column: 1 / -1; }
 .labs .card:first-child .shot { aspect-ratio: 21 / 9; }
+.labs .card:first-child .shot img { object-position: center 0%; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; }
 
 .card { position: relative; }
