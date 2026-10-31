@@ -1,12 +1,14 @@
 // Content lives here so adding a screenshot means adding one path.
 // Lab screenshots go in assets/labs/ (e.g. assets/labs/bridgelab-01.webp).
 
+const lab = (slug, n) => Array.from({ length: n }, (_, i) => `assets/labs/${slug}-0${i + 1}.webp`);
 const labs = [
-  { name: "RC SiteLab", text: "Reinforced-concrete construction site: formwork, rebar placement and pour sequence.", images: [] },
-  { name: "BridgeLab VR", text: "Bridge types and how load travels through each structure.", images: [] },
-  { name: "Seismic Shake Table", text: "Buildings on a virtual shake table under different earthquake inputs.", images: [] },
-  { name: "Hydraulics & Dam Safety", text: "Dam components, spillway flow and failure scenarios.", images: [] },
-  { name: "Engine Lab VR", text: "Internal-combustion engine assembly and the four-stroke cycle.", images: [] }
+  { name: "RC SiteLab", text: "Reinforced-concrete construction site: formwork, rebar placement and pour sequence.", images: lab("rc-sitelab", 3) },
+  { name: "BridgeLab VR", text: "Bridge types and how load travels through each structure.", images: lab("bridgelab", 2) },
+  { name: "Seismic Shake Table", text: "Buildings on a virtual shake table under different earthquake inputs.", images: lab("shaketable", 2) },
+  { name: "Hydraulics & Dam Safety", text: "Dam components, spillway flow and failure scenarios.", images: lab("hydraulics", 2) },
+  { name: "Engine Lab VR", text: "Internal-combustion engine assembly and the four-stroke cycle.", images: lab("engine-lab", 2) },
+  { name: "SuperCar Demo", text: "Real-time vehicle visualisation and interaction in Vizard.", images: lab("supercar", 2) }
 ];
 
 const f = (n) => `assets/fyp/${n}.webp`;
